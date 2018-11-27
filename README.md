@@ -5,7 +5,7 @@
 * [Projekt](#Projekt)
   * [Spiel](#Idee)
 * [Stundenlog (*seperate Datei*)](https://github.com/StormarnJB/AKW-Simulator/blob/master/STUNDENLOG.md)
-  * [August](https://github.com/StormarnJB/StormarnJB/blob/master/Stundenlog.md#Novembert)
+  * [November](https://github.com/StormarnJB/StormarnJB/blob/master/Stundenlog.md#November)
 
 
 ## Das Projekt <a name="Projekt"></a>
