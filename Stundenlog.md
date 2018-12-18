@@ -22,3 +22,8 @@ Heute wurden innerhalb der Stunde einige Projekte unserer Mitschüler vorgestell
 ### 17. Dezember
 
 Heute haben wir für die einzelnen Untermenüs Layout dateien erstellt. Diese ermöglichen es uns innerhalb der Menüs verschiedene Elemnte einzubauen und ermöglichen ein komfortables Hin und Herwechseln. Außerdem mussten wir zum zweiten mal ein Handy konfigurieren, da er die Einstellungen standardmäßig nicht speichert.
+
+
+### 18. Dezember 
+
+Heute haben wir uns mit Layouts einer Android App beschäftigt. Wir haben versucht ein großes Layout mit zwei Feldern zu erstellen, von dem eins von den Untermenü Layouts gefüllt wird und das andere aus der unteren Leiste besteht. 
