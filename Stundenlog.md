@@ -3,6 +3,7 @@
 ## *Inhalt:* <a name="Inhalt"></a>
 * [November](#November)
 * [Dezember](#Dezember)
+* [Januar](#Januar)
 
 
 ## November <a name="November"></a>
@@ -27,3 +28,10 @@ Heute haben wir für die einzelnen Untermenüs Layout dateien erstellt. Diese er
 ### 18. Dezember 
 
 Heute haben wir uns mit Layouts einer Android App beschäftigt. Wir haben versucht ein großes Layout mit zwei Feldern zu erstellen, von dem eins von den Untermenü Layouts gefüllt wird und das andere aus der unteren Leiste besteht. 
+
+
+## Januar <a name="Januar"></a>
+
+### 8. Januar
+
+Heute haben wir einige Layoutänderungen durchgeführt. Zusätzlich haben wir das untere Menü so bearbeitet, dass es immer angezeigt wird, auch wenn das obere Menü geändert wird. währenddessen gab es einige Probleme welhce uns zeitlich leider aufgehalten haben, sodass wir unser Stundenziel, mithilfe der unteren Leiste die Layouts zu ändern, noch nicht erreichen konnten. 
