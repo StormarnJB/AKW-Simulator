@@ -4,6 +4,7 @@
 * [November](#November)
 * [Dezember](#Dezember)
 * [Januar](#Januar)
+* [15. Januar - Neubeginn](#Neu)
 
 
 ## November <a name="November"></a>
@@ -40,6 +41,6 @@ Heute haben wir einige Layoutänderungen durchgeführt. Zusätzlich haben wir da
 
 Heute haben wir weiterhin versucht das Grundgerüst fertigzustellen, doch sind nach einigem Abwägen zum Entschluss gekommen, dass wir lieber von vorne mit einem anderen projekt beginnen, als das jetzigezu beenden.
 
-### 15. Januar
+### 15. Januar <a name="Neu"></a>
 
 Heute haben wir mit unserem neuen Projekt angefangen. Wir einigten uns auf ie Arbeit mit greenfoot, da Android Studio zu viel Leistung benötigte und so nicht vernünftig auf dem Laptop lief und Greenfoot eine vernünftige Alternative bietet mit der wir auch in Java weiterarbeiten können. WIr begannen mit "Bario - The Game" einem Jump'n'run mit dem Protagonisten Bario. Wir haben die Klasse von Bario und seiner Waffe, einer Rakete, erstellt und Bario die Fähigkeit gegeben sich zu bewegen. Um den verlorenen Fortschritt wieder aufzuarbeiten haben wir ns entschlossen dies zuhause zu tun.
