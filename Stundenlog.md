@@ -35,3 +35,11 @@ Heute haben wir uns mit Layouts einer Android App beschäftigt. Wir haben versuc
 ### 8. Januar
 
 Heute haben wir einige Layoutänderungen durchgeführt. Zusätzlich haben wir das untere Menü so bearbeitet, dass es immer angezeigt wird, auch wenn das obere Menü geändert wird. währenddessen gab es einige Probleme welhce uns zeitlich leider aufgehalten haben, sodass wir unser Stundenziel, mithilfe der unteren Leiste die Layouts zu ändern, noch nicht erreichen konnten. 
+
+### 14. Januar
+
+Heute haben wir weiterhin versucht das Grundgerüst fertigzustellen, doch sind nach einigem Abwägen zum Entschluss gekommen, dass wir lieber von vorne mit einem anderen projekt beginnen, als das jetzigezu beenden.
+
+### 15. Januar
+
+Heute haben wir mit unserem neuen Projekt angefangen. Wir einigten uns auf ie Arbeit mit greenfoot, da Android Studio zu viel Leistung benötigte und so nicht vernünftig auf dem Laptop lief und Greenfoot eine vernünftige Alternative bietet mit der wir auch in Java weiterarbeiten können. WIr begannen mit "Bario - The Game" einem Jump'n'run mit dem Protagonisten Bario. Wir haben die Klasse von Bario und seiner Waffe, einer Rakete, erstellt und Bario die Fähigkeit gegeben sich zu bewegen. Um den verlorenen Fortschritt wieder aufzuarbeiten haben wir ns entschlossen dies zuhause zu tun.
