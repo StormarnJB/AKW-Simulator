@@ -44,3 +44,7 @@ Heute haben wir weiterhin versucht das Grundgerüst fertigzustellen, doch sind n
 ### 15. Januar <a name="Neu"></a>
 
 Heute haben wir mit unserem neuen Projekt angefangen. Wir einigten uns auf ie Arbeit mit greenfoot, da Android Studio zu viel Leistung benötigte und so nicht vernünftig auf dem Laptop lief und Greenfoot eine vernünftige Alternative bietet mit der wir auch in Java weiterarbeiten können. WIr begannen mit "Bario - The Game" einem Jump'n'run mit dem Protagonisten Bario. Wir haben die Klasse von Bario und seiner Waffe, einer Rakete, erstellt und Bario die Fähigkeit gegeben sich zu bewegen. Um den verlorenen Fortschritt wieder aufzuarbeiten haben wir ns entschlossen dies zuhause zu tun.
+
+### 21. Januar
+
+Heute haben wir Gravitation hinzugefügt. Die Rocket bewgt sich jetz begrenzt nach Rechts und dann wieder nach links. 
