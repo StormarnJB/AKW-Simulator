@@ -48,3 +48,7 @@ Heute haben wir mit unserem neuen Projekt angefangen. Wir einigten uns auf ie Ar
 ### 21. Januar
 
 Heute haben wir Gravitation hinzugefügt. Die Rocket bewgt sich jetz begrenzt nach Rechts und dann wieder nach links. 
+
+### 22. Januar
+
+Heute haben wir einige generelle FUnktionen überabeitet. Zudem haben wir den Gegner - ein Kamel - hinzugefügt. Die Rakete verschwindet jetzt automatisch und kann erst nach 5 Sekunden erneut verwendet werden.
