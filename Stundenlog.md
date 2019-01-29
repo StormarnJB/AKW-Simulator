@@ -52,3 +52,7 @@ Heute haben wir Gravitation hinzugefügt. Die Rocket bewgt sich jetz begrenzt na
 ### 22. Januar
 
 Heute haben wir einige generelle FUnktionen überabeitet. Zudem haben wir den Gegner - ein Kamel - hinzugefügt. Die Rakete verschwindet jetzt automatisch und kann erst nach 5 Sekunden erneut verwendet werden.
+
+### 29. Januar
+
+Heute haben wir den Cooldown überarbeitet und die Gravitation üerarbeitet. Wir haben zusätzlich das Gerät gewechselt. KamelKI "KaKI" hinzugefügt. Idee des generellen Spiels -> Rätsel 2 wege
