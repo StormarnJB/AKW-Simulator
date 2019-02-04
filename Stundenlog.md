@@ -52,7 +52,7 @@ Heute haben wir Gravitation hinzugefügt, sodass sich jedes Objekt, welches wir 
 
 ### 22. Januar
 
-Heute haben wir bereits  vorhandene Funktionen überarbeitet und Werte für Bewegungsgeschwindigkeiten angepasst. Außerdem haben wir den ersten Gegner, ein Kamel hinzugefügt. Um zu verhindern dass der Spieler einen unendlichen STrom an Raketen starten kann haben wir einen Cooldown hinzugefügt, haben dabei aber einen Fehler gemacht. Da wir den Cooldown in der 'act()'-Funktion platziert haben, hat das gesamte Programm 5 Sekunden gewartet.
+Heute haben wir bereits  vorhandene Funktionen überarbeitet und Werte für Bewegungsgeschwindigkeiten angepasst. Außerdem haben wir den ersten Gegner, ein Kamel, hinzugefügt. Um zu verhindern dass der Spieler einen unendlichen Strom an Raketen starten kann haben wir einen Cooldown hinzugefügt, haben dabei aber einen Fehler gemacht. Da wir den Cooldown in der `act()`-Funktion platziert haben, hat das gesamte Programm 5 Sekunden gewartet.
 
 ### 29. Januar
 
