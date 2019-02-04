@@ -5,7 +5,7 @@
 * [Dezember](#Dezember)
 * [Januar](#Januar)
 * [15. Januar - Neubeginn](#Neu)
-
+* [Februar](#Februar)
 
 ## November <a name="November"></a>
 
@@ -41,7 +41,7 @@ Heute haben wir einige Layoutänderungen durchgeführt. Zusätzlich haben wir da
 
 Da wir es heute erneut nicht geschafft haben das Layout fertigzustellen und auch keine weiteren Ansätze hatten haben wir uns entschieden ein anderes Projekt zu beginnen. Da wir weiterhin gerne mit Java arbeiten wollten entschieden wir uns für Greenfoot. 
 
-### 15. Januar <a name="Neu"></a>
+### 15. Januar (Neubeginn)<a name="Neu"></a>
 
 Heute haben wir mit unserem neuen Projekt angefangen. Wie bereits erwähnt begonnen wir mit Greenfoot um unsere neue Idee zu realisieren. WIr begannen mit "Bario" einem Jump'n'run mit dem Protagonisten Bario. 
 Als erstes haben wir die jeweiligen Klassen für Bario und seine Waffe erstellt. Bario kann sich bewegen, es gibt jedoch noch keine Gravitation, er kann sich also noch in jede Richtung gleichmäßig bewegen.
@@ -53,11 +53,14 @@ Heute haben wir Gravitation hinzugefügt, sodass sich jedes Objekt, welches wir 
 ### 22. Januar
 
 Heute haben wir bereits  vorhandene Funktionen überarbeitet und Werte für Bewegungsgeschwindigkeiten angepasst. Außerdem haben wir den ersten Gegner, ein Kamel, hinzugefügt. Um zu verhindern dass der Spieler einen unendlichen Strom an Raketen starten kann haben wir einen Cooldown hinzugefügt, haben dabei aber einen Fehler gemacht. Da wir den Cooldown in der `act()`-Funktion platziert haben, hat das gesamte Programm 5 Sekunden gewartet.
+![`World`-Klasse](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/Screenshot%202019-01-22%20at%2016.29.01.png) Neue Version der `World`-Klasse mit Gravitation auf alle zuvor registrierten Objekte.
+![Ergebnis](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/Screenshot%202019-01-22%20at%2016.26.30.png) Spielwelt nach Start des Programms
+
 
 ### 29. Januar
 
 Haute haben wir den COoldown so überarbeitet, dass nicht das ganze Programm wartet, sondern dass in der World Klasse ein Timer läuft und sich erst eine neue Rakete starten lässt wenn der Cooldown auf 0 steht.
 
-### 4. Februar
+### 4. Februar <a name="Februar"></a>
 
 Heute haben wir den Stundenlog überarbeitet und Screenshots eingefügt.
