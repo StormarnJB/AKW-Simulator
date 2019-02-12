@@ -61,6 +61,12 @@ Heute haben wir bereits  vorhandene Funktionen überarbeitet und Werte für Bewe
 
 Haute haben wir den COoldown so überarbeitet, dass nicht das ganze Programm wartet, sondern dass in der World Klasse ein Timer läuft und sich erst eine neue Rakete starten lässt wenn der Cooldown auf 0 steht.
 
+
 ### 4. Februar <a name="Februar"></a>
 
 Heute haben wir den Stundenlog überarbeitet und Screenshots eingefügt.
+
+
+### 12. Februar
+
+Heute haben wir einen Untergrund hinzugefüt, die Sprung und Gravitation überarbeitet.
