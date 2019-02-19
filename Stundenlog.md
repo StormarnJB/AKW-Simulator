@@ -70,3 +70,9 @@ Heute haben wir den Stundenlog überarbeitet und Screenshots eingefügt.
 ### 12. Februar
 
 Heute haben wir einen Untergrund hinzugefüt, die Sprung und Gravitation überarbeitet.
+
+
+### 19. Februar
+
+Zuhause haben wir einen GameOver Bildschirm eingefügt, die Gravitation/sprungfunktionen (und aufegräumt) überarbeitet.
+In de Stunde haben wir Ground überabeitet hintergrund rakete macht bumm
