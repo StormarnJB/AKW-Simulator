@@ -11,7 +11,7 @@
 
 ### 27. November
 
-Heute war die erste Stunde nach der Projektabgabe, wir wurden über den weiteren Verlauf des Unterrichtgeschehens informiert und dazu angeregt neue Ideen für unser zweites Projekt zu finden. Da uns zwar die Arbeit an einer Android-App gefallen hat, wir jedoch etwas neues machen wollten entschlossen wir uns, uns von App Inventor zu trennen und mit Android Studio weiter zu arbeiten. Wir entschlossen uns einen Simulator zu erstellen. 
+Heute war die erste Stunde nach der Projektabgabe. deshalb wurden wir zuerstvüber den weiteren Verlauf des Unterrichtgeschehens informiert und dazu angeregt neue Ideen für unser zweites Projekt zu finden. Da uns zwar die Arbeit an einer Android-App gefallen hat, wir aber etwas neues machen wollten entschlossen wir uns, uns von App Inventor zu trennen und mit Android Studio weiter zu arbeiten. Unsere erste Idee war einen Simulator zu erstellen. 
 
 
 ## Dezember <a name="Dezember"></a>
@@ -23,7 +23,7 @@ Heute wurden innerhalb der Stunde einige Projekte unserer Mitschüler vorgestell
 
 ### 17. Dezember
 
-Heute haben wir für die einzelnen Untermenüs Layout Dateien erstellt, diese sollen es ermöglichen dass nur ein Teil des Layouts geändert wird und wir so nicht jedes mal neue Werte festlegen sollen. Zusätzlich mussten wir erneut Android Studio so einrichten, dass die Handys sich verbinden können, da dies nicht mehr funktionierte.
+Heute haben wir für die einzelnen Untermenüs Layout Dateien erstellt, diese sollen es ermöglichen dass nur ein Teil des Layouts geändert wird und wir so nicht jedes mal neue Werte festlegen sollen. Zusätzlich mussten wir erneut Android Studio so einrichten, dass die Handys sich verbinden können, da dies nicht gespeichert wurde und deshalb nicht  mehr funktionierte.
 
 ### 18. Dezember 
 
@@ -35,15 +35,15 @@ Zusätzlich haben wir uns generell mit Layouts einer Android App beschäftigt, d
 
 ### 8. Januar
 
-Heute haben wir einige Layoutänderungen durchgeführt. Zusätzlich haben wir das untere Menü so bearbeitet, dass es immer angezeigt wird, auch wenn das obere Menü geändert wird. Wir hatten zwar Erfolg damit, dass die untere Leiste sich nicht ändert, obwohl wir den INhalt der oberen Hälfte ändern, (für uns) unerklärlicherweise muss jedoch der Listener für die Leiste nach jedem Wechsel neu registriert werden.
+Heute haben wir einige Layoutänderungen durchgeführt. Zusätzlich haben wir das untere Menü so bearbeitet, dass es immer angezeigt wird, auch wenn das obere Menü geändert wird. Wir hatten zwar Erfolg damit, dass die untere Leiste sich nicht ändert, obwohl wir den Inhalt der oberen Hälfte ändern, (für uns) unerklärlicherweise muss jedoch der Listener für die Leiste nach jedem Wechsel neu registriert werden.
 
 ### 14. Januar
 
-Da wir es heute erneut nicht geschafft haben das Layout fertigzustellen und auch keine weiteren Ansätze hatten haben wir uns entschieden ein anderes Projekt zu beginnen. Da wir weiterhin gerne mit Java arbeiten wollten entschieden wir uns für Greenfoot. 
+Da wir es heute erneut nicht geschafft haben das Layout fertigzustellen und auch keine weiteren Ansätze hatten haben wir uns entschieden das Simulator-Projekt hinter uns zu lassen und ein anderes Projekt zu beginnen. Da wir weiterhin gerne mit Java arbeiten wollten entschieden wir uns für Greenfoot und begannen erneut Ideen zu sammeln. Wir haben uns für ein "Jump n' Run" entschieden.
 
 ### 15. Januar (Neubeginn)<a name="Neu"></a>
 
-Heute haben wir mit unserem neuen Projekt angefangen. Wie bereits erwähnt begonnen wir mit Greenfoot um unsere neue Idee zu realisieren. WIr begannen mit "Bario" einem Jump'n'run mit dem Protagonisten Bario. 
+Heute haben wir mit unserem neuen Projekt angefangen. Wie bereits erwähnt begannen wir mit Greenfoot um unsere neue Idee zu realisieren. 
 Als erstes haben wir die jeweiligen Klassen für Bario und seine Waffe erstellt. Bario kann sich bewegen, es gibt jedoch noch keine Gravitation, er kann sich also noch in jede Richtung gleichmäßig bewegen.
 
 ### 21. Januar
@@ -76,3 +76,7 @@ Heute haben wir einen Untergrund hinzugefüt, die Sprung und Gravitation überar
 
 Zuhause haben wir einen GameOver Bildschirm eingefügt, die Gravitation/sprungfunktionen (und aufegräumt) überarbeitet.
 In de Stunde haben wir Ground überabeitet hintergrund rakete macht bumm
+
+### 25. Febrauar
+
+Gespräch Abgabe - Stundenlog überarbeitet - getestet / überarbeitet
