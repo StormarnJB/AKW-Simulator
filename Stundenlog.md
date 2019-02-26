@@ -80,3 +80,8 @@ In de Stunde haben wir Ground überabeitet hintergrund rakete macht bumm
 ### 25. Febrauar
 
 Gespräch Abgabe - Stundenlog überarbeitet - getestet / überarbeitet
+
+
+### 26. Februar
+
+Gravitation in GravityActor fertig, Start Bildschirm eingeführt, Carpeto eingeführt
