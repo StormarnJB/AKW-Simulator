@@ -88,7 +88,10 @@ Gespräch Abgabe - Stundenlog überarbeitet - getestet / überarbeitet
 
 Gravitation in GravityActor fertig, Start Bildschirm eingeführt, Carpeto eingeführt.
 
+![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/0403201910_58_42.gif?raw=true)
+
 
 ### 4. März <a name="März"></a>
 
+Stundenlog verbessert gif
 
