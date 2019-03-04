@@ -6,6 +6,10 @@
   * [Spiel](#Idee)
 * [Stundenlog (*seperate Datei*)](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md)
   * [November](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#November)
+  * [Dezember](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#Dezember)
+  * [Januar](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#Januar)
+  * [Februar](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#Februar)
+  * [März](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#März)
 
 
 ## Das Projekt <a name="Projekt"></a>
