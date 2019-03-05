@@ -93,5 +93,5 @@ Gravitation in GravityActor fertig, Start Bildschirm eingeführt, Carpeto eingef
 
 ### 4. März <a name="März"></a>
 
-Stundenlog verbessert gif
+Heute haben wir die Formalität des Stundenlogs verbessert. Außerdem haben wir einen kurzen Clip aufgenommen (GIF)
 
