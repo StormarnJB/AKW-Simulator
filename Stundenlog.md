@@ -95,3 +95,7 @@ Gravitation in GravityActor fertig, Start Bildschirm eingeführt, Carpeto eingef
 
 Heute haben wir die Formalität des Stundenlogs verbessert. Außerdem haben wir einen kurzen Clip aufgenommen (GIF)
 
+### 5. März 
+
+Heute haben wir mehrere Platformen die zufällig in der Welt erschaffen werden eingefügt. Diese Funktion wollen wir aber später noch anpassen und wenn möglich zwei Spielmodi erstellen.
+
