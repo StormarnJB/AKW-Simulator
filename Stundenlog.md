@@ -12,7 +12,7 @@
 
 ### 27. November
 
-Heute war die erste Stunde nach der Projektabgabe. deshalb wurden wir zuerst über den weiteren Verlauf des Unterrichtgeschehens informiert und dazu angeregt neue Ideen für unser zweites Projekt zu finden. Da uns zwar die Arbeit an einer Android-App gefallen hat, wir aber etwas neues machen wollten entschlossen wir uns, uns von App Inventor zu trennen und mit Android Studio weiter zu arbeiten. Unsere erste Idee war einen Simulator zu erstellen. <hr>
+Heute war die erste Stunde nach der Projektabgabe, deshalb wurden wir zuerst über den weiteren Verlauf des Unterrichtgeschehens informiert und dazu angeregt neue Ideen für unser zweites Projekt zu finden. Da uns zwar die Arbeit an einer Android-App gefallen hat, wir aber etwas neues machen wollten entschlossen wir uns, uns von App Inventor zu trennen und mit Android Studio weiter zu arbeiten. Unsere erste Idee war einen Simulator zu erstellen. <hr>
 
 
 ## Dezember <a name="Dezember"></a>
@@ -24,7 +24,7 @@ Heute wurden innerhalb der Stunde einige Projekte unserer Mitschüler vorgestell
 
 ### 17. Dezember
 
-Heute haben wir für die einzelnen Untermenüs Layout Dateien erstellt, diese sollen es ermöglichen dass nur ein Teil des Layouts geändert wird und wir so nicht jedes mal neue Werte festlegen sollen. Zusätzlich mussten wir erneut Android Studio so einrichten, dass die Handys sich verbinden können, da dies nicht gespeichert wurde und deshalb nicht mehr funktionierte. <hr>
+Heute haben wir für die einzelnen Untermenüs Layout Dateien erstellt, diese sollen es ermöglichen dass nur ein Teil des Layouts geändert wird und wir nicht jedes mal wieder neue Werte festlegen sollen. Zusätzlich mussten wir erneut Android Studio so einrichten, dass die Handys sich verbinden können, da dies nicht gespeichert wurde und deshalb nicht mehr funktionierte. <hr>
 
 ### 18. Dezember 
 
@@ -40,7 +40,7 @@ Heute haben wir einige Layoutänderungen durchgeführt. Zusätzlich haben wir da
 
 ### 14. Januar
 
-Da wir es heute erneut nicht geschafft haben das Layout fertigzustellen und auch keine weiteren Ansätze hatten haben wir uns entschieden das Simulator-Projekt hinter uns zu lassen und ein anderes Projekt zu beginnen. Da wir weiterhin gerne mit Java arbeiten wollten entschieden wir uns für Greenfoot und begannen erneut Ideen zu sammeln. Wir haben uns für ein "Jump n' Run" entschieden. <hr>
+Da wir es heute erneut nicht geschafft haben das Layout fertigzustellen und auch keine weiteren Ansätze hatten haben wir uns entschieden das Simulator-Projekt hinter uns zu lassen und ein anderes Projekt zu beginnen. Da wir weiterhin gerne mit Java arbeiten wollten entschieden wir uns für Greenfoot und begannen erneut Ideen zu sammeln. Wir haben uns letztendlich für ein "Jump n' Run" entschieden. <hr>
 
 ### 15. Januar (Neubeginn)<a name="Neu"></a>
 
@@ -49,7 +49,9 @@ Als erstes haben wir die jeweiligen Klassen für Bario und seine Waffe erstellt.
 
 ### 21. Januar
 
-Heute haben wir Gravitation hinzugefügt, sodass sich jedes Objekt, welches wir vorher registriert haben, nach unten bewegt. Seine Waffe bewegt sich jetzt nicht mehr unendlich nach rechts, sondern macht eine U-Drehung und kehrt an seine Startposition zurück. <hr>
+Heute haben wir Gravitation hinzugefügt, sodass sich jedes Objekt, welches wir vorher registriert haben, nach unten bewegt. Seine Waffe bewegt sich jetzt nicht mehr unendlich nach rechts, sondern macht eine 180°-Drehung und kehrt an seine Startposition zurück. <hr>
+
+####//GIF
 
 ### 22. Januar
 
@@ -99,7 +101,7 @@ Zusätzlich haben wir Carpeto, den Bösewicht, hinzugefügt.
 
 ### 4. März <a name="März"></a>
 
-Heute haben wir die Formalität des Stundenlogs verbessert. Außerdem haben wir einen kurzen Clip aufgenommen (GIF) <hr>
+Heute haben wir die Formalität des Stundenlogs verbessert. Außerdem haben wir einen kurzen Clip aufgenommen, als GIF gespeichert und anschließend bei Github hochgeladen und ins Stundenlog eingefügt. <hr>
 
 
 ### 5. März 
@@ -116,3 +118,9 @@ In Heimarbeit haben wir:
   ß. Texturen
   ß. Gravitation <hr>
 Stundenlog überarbeitet (layout + inhalt)
+
+
+### 25. März
+
+Heute haben wir den Stundenlog erneut überarbeitet, wir haben ein neues Gif vorbereitet und Screenshots neu organisiert.
+Morgen schließen wir dann das Stundenlog ab und haben heute pläne für die weiterarbeit während der Ferien gemacht. Der Bösewicht muss besiegt werden können, der Startbildschirm
