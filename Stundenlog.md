@@ -117,7 +117,7 @@ Vor dieser Stunde wurden zu Beginn des Spiels immer zwei Plattformen an der selb
 
 Zuhause haben wir die Werte des Weltgenerators angepasst, neue Texturen erstellt und eingefügt, die Bewegungen von Carpeto und dem Kamel überarbeitet und die Gravitation angepasst und verbessert. Außerdem verschwinden die Teppiche, welche einen 3D-Effekt erhalten haben (`Ground`) nun nach einiger Zeit.
 In der Schulstunde haben wir das Stundenlog überarbeitet.
-![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/raw/master/Screenshots/2603201915_22_20.gif)Aktueller Stand
+![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/raw/master/Screenshots/2603201915_22_20.gif)Aktueller Stand des Spiels
 <hr>
 
 
