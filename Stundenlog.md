@@ -54,16 +54,15 @@ Heute haben wir mit unserem neuen Projekt angefangen. Wie bereits erwähnt began
 ### 21. Januar - Erstellung der Grundlagen
 
 Da man in einem Jump'n'Run springen können sollte, was ohne Gravitation nicht wirklich funktioniert, haben wir diese erstellt. Jedes vorher registrierte Objekt wird bei jedem Ausführen der `act()`-Methode in unserer `MyWorld`-Klasse nach unten bewegt, wobei die Geschwindigkeit zunimmt. Außerdem dreht die Rakete jetzt nach einiger Zeit und kehrt an seine Startposition zurück.
-
-####//GIF
+<hr>
 
 ### 22. Januar - Erweiterung der Spielphysik
 
 Heute haben wir bereits  vorhandene Funktionen (wie die Gravitation) überarbeitet und einige Werte für Bewegungsgeschwindigkeiten angepasst. 
 Außerdem haben wir den ersten Gegner, ein Kamel, hinzugefügt. Um zu verhindern dass der Spieler einen unendlichen Strom an Raketen starten kann haben wir einen Cooldown hinzugefügt, haben dabei aber einen Fehler gemacht. Da wir den Cooldown in der `act()`-Funktion platziert haben, wartet das ganze Programm, was es nicht tun soll.
 ![`World`-Klasse](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/Screenshot%202019-01-22%20at%2016.29.01.png) Neue Version der `World`-Klasse mit Gravitation auf alle zuvor registrierten Objekte.
-![Ergebnis](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/Screenshot%202019-01-22%20at%2016.26.30.png) Spielwelt nach Start des Programms <hr>
-
+![Ergebnis](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/Screenshot%202019-01-22%20at%2016.26.30.png) Spielwelt nach Start des Programms 
+<hr>
 
 ### 29. Januar - Überarbeitung der Rakete
 
@@ -78,40 +77,37 @@ Heute haben wir einige Texte in unserem Stundenlog überarbeitet und erweitert, 
 
 ### 12. Februar - Erstellung der Plattformen
 
-Wir hatten zwar bereits Gravitation hinzugefügt ( in die World), aber es gab noch keine Plattformen o.ä. auf welchen die `Actor` stehen können, diese haben wir heute hinzugefügt. Die `Ground`-Klasse ist zwar leer, dies ist aber gewollt da alles in der Gravitation ausgeführt wird. (GetObjectsAtOffset())
-Zusätzlich haben wir die Gravitation so angepasst, dass sie nur gilt, solange man nict auf einem Ground steht. Man fällt jedoch teilweise noch hindurch. Wir müssen die Sprung funktion also überarbeiten <hr>
-
+Wir hatten zwar bereits Gravitation hinzugefügt (in der `MyWorld`-Klasse), aber es gab noch keine Plattformen, auf welchen die `Actor` stehen können, diese haben wir heute als `Ground` hinzugefügt. Die `Ground`-Klasse selbst ist leer, da die Plattformen nur eine passive Funktion haben. Bei der Berechnung benutzen wir die `getObjectsAtOffset`-Methode von Greenfoot. Es kann jedoch vorkommen, dass der `Actor` nach/bei einem Sprung durch diesen hindurchfällt, wir hatten jedoch nicht mehr genug Zeit diese Problem anzugehen.
+<hr>
 
 ### 19. Februar - Überarbeitung der Grundelemente
 
-Zuhause haben wir einen GameOver Bildschirm eingefügt, die Gravitation/sprungfunktionen (und aufegräumt) überarbeitet, sodass man nicht mehr durch die Boden fallen kann. Dafür bewegen wir jeden Actor der mit einem Boden überschneidet auf diesen Boden. Das ganze sieht noch ein wenig unschön aus.
-in der Stunde haben wir die Raketenfunktion überarbeitet, sie hat nun einen Sinn, da das kamel verschwindet.
-In de Stunde haben wir Ground überabeitet hintergrund rakete macht bumm. <hr>
-
+In Heimarbeit haben wir einen GameOver Bildschirm eingefügt und die Gravitation/Sprungfunktionen so überarbeitet, dass man nicht mehr durch die Boden fallen kann. Außerdem haben wir einzelne Funktionen entfernt, welche keinen Sinn mehr hatten. Damit die `Actor` nicht mehr durch den Boden fallen können, bewegen wir jeden `Actor` der mit einem Boden überschneidet auf diesen Boden. Zusätzlich haben wir einen hintergrund eingefügt und die Raketenfunktion erweitert. Wenn die Rakete auf ein Kamel trifft verschwinden die Rakete und das Kamel.
+<hr>
 
 ### 25. Febrauar - Überarbeitung des Stundenlogs
 
-Gespräch Abgabe - Stundenlog überarbeitet - getestet / überarbeitet <hr>
+Zu Beginn der Stunde fand ein Gespräch über die Abgabetermine statt, anschließend haben wir einige einträge des Stundenlogs überarbeitet und unser Projekt auf Fehler getestet und diese (nicht schwerwiegenden) anschließend entfernt. 
+<hr>
 
 
 ### 26. Februar - Verschiebung der `gravity()`-Funktion in die `GravityActor`-Klasse
 
-Gravitation in GravityActor fertig, Start Bildschirm eingeführt, Carpeto eingeführt.
-Da wir die Gravitation in der MyWorld hatten und das Probleme macht haben wir es (nach Aufforderung) in die neu erschaffene GravityActor Klasse verschoben. Bario und Camel sind jetzt Subklassen von dieser.
-Da das Spiel derzeit sofort beginnt wenn man die Anwendung startet und das nicht angenehm ist haben wir einen STartbildschirm eingefügt.
-Zusätzlich haben wir Carpeto, den Bösewicht, hinzugefügt. 
-
-![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/0403201910_58_42.gif?raw=true) <hr>
+Auf Hinweis von Herrn Buhl haben wir die Gravitation aus der `MyWorld` in die neu erstellte `GravityActor`-Klasse verschoben. Bario und die Kamele sind unterklassen von `GravityActor`, wodurch wir innerhalb der `gravity()` besser auf die Klassen `Bario` und `Camel` zugreifen können. Innerhalb dieser Klassen müssen wir jetzt nur in der `act()` einmal `gravity()` ausführen. Außerdem haben wir Carpeto, den Bösewicht welcher alle Camelidae (Kamele, Lamas, Alpakas etc.) der Welt unterwerfen möchte, hinzugefügt. Zusätzlich haben wir einen Startbildschirm erstellt.
+![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/0403201910_58_42.gif?raw=true) 
+Derzeitiger Stand des Spiels inkl. Startbildschirm
+<hr>
 
 ## März <a name="März"></a>
 
 ### 4. März - Überarbeitung des Stundenlogs
 
-Heute haben wir die Formalität des Stundenlogs verbessert. Außerdem haben wir einen kurzen Clip aufgenommen, als GIF gespeichert und anschließend bei Github hochgeladen und ins Stundenlog eingefügt. <hr>
-
+Heute haben wir das Aussehen des Stundenlogs verbessert und ein Gif erstellt und eingefügt um den aktuellen Stand des Spiels zu visualisieren.
+<hr>
 
 ### 5. März  - Erstellen eines Weltgenerators
 
+Derzeit werden 
 Heute haben wir mehrere Platformen die zufällig in der Welt erschaffen werden eingefügt. Diese Funktion wollen wir aber später noch anpassen und wenn möglich zwei Spielmodi erstellen. <hr>
 
 
