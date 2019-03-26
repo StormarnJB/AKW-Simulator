@@ -87,7 +87,7 @@ In Heimarbeit haben wir einen GameOver Bildschirm eingefügt und die Gravitation
 
 ### 25. Febrauar - Überarbeitung des Stundenlogs
 
-Zu Beginn der Stunde fand ein Gespräch über die Abgabetermine statt, anschließend haben wir einige einträge des Stundenlogs überarbeitet und unser Projekt auf Fehler getestet und diese (nicht schwerwiegenden) anschließend entfernt. 
+Zu Beginn der Stunde fand ein Gespräch über die Abgabetermine statt, anschließend haben wir einige Einträge des Stundenlogs überarbeitet und unser Projekt auf Fehler getestet und diese (nicht schwerwiegenden) anschließend entfernt. 
 <hr>
 
 
@@ -107,29 +107,24 @@ Heute haben wir das Aussehen des Stundenlogs verbessert und ein Gif erstellt und
 
 ### 5. März  - Erstellen eines Weltgenerators
 
-Derzeit werden 
-Heute haben wir mehrere Platformen die zufällig in der Welt erschaffen werden eingefügt. Diese Funktion wollen wir aber später noch anpassen und wenn möglich zwei Spielmodi erstellen. <hr>
-
-
+Vor dieser Stunde wurden zu Beginn des Spiels immer zwei plattformen an der selben Stelle erstellt, das haben wir heute geändert. Dafür haben wir in unserer `MyWorld`-Klasse die `generateWorld()`-Funktion erstellt, anfangs haben wir die Plattformen komplett zufällig erstellt, was jedoch teilweise zu unmöglichen Leveln geführt hat. Um das zu vermeiden erstellen wir jetzt Stück für Stück die Welt. Nur die erste Plattform wird zufällig in die Welt gesetzt, die nächsten Plattformen werden nach füür nach um einen zufälligen Betrag innerhalb eines Intervalls nach oben und rechts verschoben. Da dieser Betrag nicht sehr hoch ist (jeweils ~1/3 der Seitenlängen) existiert fast immer eine erreichbare Plattform.
+<hr>
 
 ### 18. März - Überarbeitung des Stundenlogs
 
-In Heimarbeit haben wir:
-  ß. Welt Generator
-  ß. KaKI
-  ß. Texturen
-  ß. Gravitation <hr>
-Stundenlog überarbeitet (layout + inhalt) <hr>
+Zuhause haben wir die Werte des Weltgenerators angepasst, neue Texturen erstellt und eingefügt, die Bewegungen von Carpeto und dem Kamel überarbeitet und die Gravitation angepasst und verbessert. Außerdem verschwinden die Teppiche, welche einen 3D-Effekt erhalten haben (`Ground`) nun nach einiger Zeit.
+In der Schulstunde haben wir das Stundenlog überarbeitet
+![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/raw/master/Screenshots/2603201915_22_20.gif)Aktueller Stand
 
 
 ### 25. März - Überarbeitung des Stundenlogs
 
-Heute haben wir den Stundenlog erneut überarbeitet, wir haben ein neues Gif vorbereitet und Screenshots neu organisiert.
-Morgen schließen wir dann das Stundenlog ab und haben heute pläne für die weiterarbeit während der Ferien gemacht. Der Bösewicht muss besiegt werden können, der Startbildschirm <hr>
+Heute haben wir den Stundenlog erneut überarbeitet, wir haben ein neues Gif vorbereitet und die Screenshots neu organisiert.
+Zusätzlich haben wir uns heute Gedanken über die Weiterarbeit während der Ferien gemacht. Um unser Spiel fertigzustellen müssen wir den Bösewicht besiegbar machen, das Kamel überarbeiten, den Startbildschirm ansprechender gestalten und falls möglich in den Start und Gameoverbildschirm Animationen einfügen welche die Hintergrundgeschichte erklären.
 
 
 ### 26. März - Überarbeitung des Stundenlogs
 
-Da heute der Abgabetag für das Stundenlog ist, haben wir uns erneut auf dessen Überarbeiuntung fokussiert.
-![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/raw/master/Screenshots/2603201915_22_20.gif)<hr>
+Da heute der Abgabetag für das Stundenlog ist, haben wir zu Anfang der Stunden uns dessen Überarbeitung konzentriert. Da uns klar wurde, dass wir innerhalb der übrigen Zeit in der Schule sowieso nicht fertig werden und da wir noch Screenshots von unseren Heimgeräten hochladen wollten haben wir unser Spiel getestet und den Weltgenerator leicht überarbeitet.
+<hr>
 
