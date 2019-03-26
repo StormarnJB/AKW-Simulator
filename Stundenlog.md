@@ -66,8 +66,9 @@ Außerdem haben wir den ersten Gegner, ein Kamel, hinzugefügt. Um zu verhindern
 
 Heute haben wir den Cooldown so überarbeitet, dass nicht das ganze Programm wartet, sondern dass in der World Klasse ein Timer läuft und sich erst eine neue Rakete starten lässt wenn der Cooldown auf 0 steht. Der Cooldown wird in der oberen linken Ecke angezeigt, hierfür verwenden wir die `showText()`-Methode<hr>
 
+## Februar <a name="Februar"></a>
 
-### 4. Februar - Überarbeitung des Stundenlogs<a name="Februar"></a>
+### 4. Februar - Überarbeitung des Stundenlogs
 
 Heute haben wir einige Texte in unserem Stundenlog überarbeitet und erweitert, zusätzlich haben wir einige ältere Screenshots hochgeladen und eingefügt. <hr>
 
@@ -99,8 +100,9 @@ Zusätzlich haben wir Carpeto, den Bösewicht, hinzugefügt.
 
 ![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/0403201910_58_42.gif?raw=true) <hr>
 
+## März <a name="März"></a>
 
-### 4. März - Überarbeitung des Stundenlogs<a name="März"></a>
+### 4. März - Überarbeitung des Stundenlogs
 
 Heute haben wir die Formalität des Stundenlogs verbessert. Außerdem haben wir einen kurzen Clip aufgenommen, als GIF gespeichert und anschließend bei Github hochgeladen und ins Stundenlog eingefügt. <hr>
 
@@ -118,16 +120,17 @@ In Heimarbeit haben wir:
   ß. KaKI
   ß. Texturen
   ß. Gravitation <hr>
-Stundenlog überarbeitet (layout + inhalt)
+Stundenlog überarbeitet (layout + inhalt) <hr>
 
 
 ### 25. März - Überarbeitung des Stundenlogs
 
 Heute haben wir den Stundenlog erneut überarbeitet, wir haben ein neues Gif vorbereitet und Screenshots neu organisiert.
-Morgen schließen wir dann das Stundenlog ab und haben heute pläne für die weiterarbeit während der Ferien gemacht. Der Bösewicht muss besiegt werden können, der Startbildschirm
+Morgen schließen wir dann das Stundenlog ab und haben heute pläne für die weiterarbeit während der Ferien gemacht. Der Bösewicht muss besiegt werden können, der Startbildschirm <hr>
 
 
 ### 26. März - Überarbeitung des Stundenlogs
 
 Da heute der Abgabetag für das Stundenlog ist, haben wir uns erneut auf dessen Überarbeiuntung fokussiert.
-![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/raw/master/Screenshots/2603201915_22_20.gif)
+![Aktueller Stand](https://github.com/StormarnJB/BarioTheGame/raw/master/Screenshots/2603201915_22_20.gif)<hr>
+
