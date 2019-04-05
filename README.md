@@ -1,9 +1,11 @@
-# Bario
+# Informatik Projekt 2 - Bario
 *von Julian und Benedict, 12e*
 
 ## Inhaltsverzeichnis
 * [Projekt](#Projekt)
   * [Spiel](#Idee)
+  * [Greenfoot]()#Greenfoot
+* [Aufbau](#Aufbau)
 * [Stundenlog (*seperate Datei*)](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md)
   * [November](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#November)
   * [Dezember](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#Dezember)
