@@ -4,7 +4,7 @@
 ## Inhaltsverzeichnis
 * [Projekt](#Projekt)
   * [Spiel](#Idee)
-  * [Greenfoot]()#Greenfoot
+  * [Greenfoot](#Greenfoot)
 * [Aufbau](#Aufbau)
 * [Stundenlog (*seperate Datei*)](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md)
   * [November](https://github.com/StormarnJB/BarioTheGame/blob/master/Stundenlog.md#November)
