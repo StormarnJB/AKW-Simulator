@@ -138,7 +138,7 @@ In den ersten 400 Durchläufen der `act()` Methode bewegen die Alpakas sich jewe
 Im 401sten Durchlauf werden ihre Bilder auf ein nach links schauendes Alpaka gesetzt ('Alpaca.png' schaut nach rechts) und sie werden in Richtung des linken Bildschirmrands gedreht. 
 In allen Durchläüfen danach bewegen sie sich um jewils zwei Felder (mit der im Konstruktor defnierten Seitenlänge von einem Pixel). Sobald sie den Bildschirmrand erreicht haben werden sie aus der Welt entfernt. Gleichzeitig wird durch `alpacasremoved` mitgezählt wie viele Alpakas bereits entfernt wurden. Sobald die Anzahl der entfernten Alpakas der Anzahl der anfangs hinzugefügten Alpakas entspricht wird das Spiel gestartet, indem die Welt zu `MyWorld` geändert wird.
 
-Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm zuständig. Beim 121sten Durchlauf wird "Carpeto", der Bösewicht, vergrößert, gespiegelt und anschließend hinzugefügt. Im 226sten Durchlauf wird Carpetos Dialogtext hinzugefügt, im 401sten Barios Aufruf an seine Alpakas zu fliehen. Im 461sten Durchlauf wird Barios Text dann auf eine Antwort an Carpeto geändert.
+Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm zuständig. Beim 121sten Durchlauf wird "Carpeto", der Bösewicht, vergrößert, gespiegelt und anschließend hinzugefügt. Im 226sten Durchlauf wird Carpetos Dialogtext hinzugefügt, im 401sten Barios Aufruf an seine Alpakas zu fliehen. Im 461sten Durchlauf wird Barios Text dann auf eine Antwort an Carpeto geändert.  
 ![Start Bildschirm bei i > 460](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/StartScreen2.PNG)
 
 </details>
@@ -259,7 +259,19 @@ public class MyWorld extends World{
 ```
 </details>
 
+Die `MyWorld` Welt ist die Spielwelt, weshalb sie am meisten Inhalt hat.  
+Innerhalb des Konstruktors werden Bario und ein Kamel erstellt. Anschließend wird die `generateWorld`Funktion aufgerufen, welche für die Weltgenerierung zuständig ist. Zusätzlich wird die "PaintOrder" festgelegt, sie definiert die "Ebenen" auf welchen die Actor angezeigt werden. Die erstgenannten Klassen werden ganz oben angezeigt. Außerdem wird der Text für den Cooldown von Barios Waffe, der Rakete, angezeigt.  
+Die `generateWorld()` generiert zufällige Welten, sodass sich jeder Spieldurchlauf unterscheidet. Am Anfang wird die "Startplattform" erstellt. Sie befindet sich zwischen den x-Koordinaten 0-100 und den y-koordinaten 0-300. Ihre Koordinaten werden als `lastx` und `lasty` zwischengespeichert. Auf ihr wird das im konstruktor generierte Kamel platziert.  
+Anschließend werden in einer Schleife zehn weitere Plattformen (`Ground`) erstellt. Es wird jeweils eine zufällige Verschiebung in x und y-Richtung auf die Koordinaten der vorherig generierten Plattform angewandt. Liegt der neu generierte x/y Wert jedoch außerhalb des gewünschten Spielbereichs wird er angepasst.  
+Sobald alle Plattformen generiert wurden wird Bario aud die zuletzt generierte Plattform gesetzt. Anschließend wird Carpeto und seine durchsichtige Plattform (In Carpeto.class: `gs = new Sprite(new GreenfootImage("groundshadowevil.png"));`) hinzugefügt.  
+![Beispielwelten](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/Welten.png)
 
+Innerhalb der `act()` werden die Verfügbarkeit der Rakete definiert und alle Objekte verschoben.  
+Am Anfang der `act()` wird der "Counter" aktualisiert, er zeigt die Anzahl der bereits durchgeführten `act()`s.  
+Anschließend wird überprüft ob der Spieler Leertaste drückt um die Rakete abzuschießen und ob sie bereits bereit ist. Ist dass der Fall wird die Rakete erstellt und gegebenenfalls gedreht um in die gewünschte Richtung zu starten.
+Sobald die Rakete durch Ausführen von `removeRocket(Rocket rocket)` entfernt wurde und so `rocketremoval = true` gesetzt wurde, wird in der `act()` der `cooldown` aktualisiert. Sobald der `cooldown` also die Differenz der Systemzeiten beim Entfernen und Überprüfen kleiner/gleich 0 ist, wird die Rakete wieder verfügbar gemacht.  
+Anschließend werden sämtliche `Actor` in der Welt um ein Feld nach links verschoben. Da alle Objekte gleichmäßig verschoben werden entsteht eine Illusion einer unendlichen Welt.  
+Die Funktionen `getBario()` und `getCarpeto()` geben das jeweils gewünschte Objekt zurück.
 
 </details>
 <!--- Ende MyWorld                                                                                                       -->
