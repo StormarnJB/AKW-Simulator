@@ -31,6 +31,9 @@ Die Hauptattraktion für Lernende ist, dass sehr schnell und interaktiv animiert
 
 ## Aufbau <a name="Aufbau"></a>
 
+Greenfootprojekte bestehen jeweils aus `World` und `Actor` Klassen. Unser Greenfootprojekt besteht aus 4 Welten und 8 Akteuren:  
+![Struktur](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/Stuktur.PNG)
+
 ### Die Welten
 
 <!--- START                                                                                                              -->
@@ -405,3 +408,161 @@ Im zweiten Teil der `act()` wird das Verhalten der Alpakas definiert. Wie bei de
 ![Victory Bildschirm bei i > 242](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/VictoryScreen2.PNG)
 </details>
 <!--- Ende Victory                                                                                                      -->
+
+
+### Die Akteure
+
+<!--- Sprite                                                                                                      -->
+<details>
+    <summary>Sprite</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+public class Sprite extends Actor{
+    
+    public Sprite(GreenfootImage g){
+        setImage(g);
+    }
+    
+    public void act(){
+    }    
+}
+```
+</details>
+
+Die `Sprite`Klasse wird in den Welten `Start`, `MyWorld`, und `Victory` benutzt. Da diese auch ihr Verhalten kontrollieren und die Sprites also eigentlich nur Bilder sind, tun sie auch nichts. Im Konstruktor wird das von ihnen dargestellte Bild definiert.
+
+</details>
+<!--- Ende Sprite                                                                                                      -->
+
+
+<!--- Ground                                                                                                     -->
+<details>
+    <summary>Ground</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+
+```
+</details>
+
+
+
+</details>
+<!--- Ende Ground                                                                                                      -->
+
+
+<!--- GravityActor                                                                                                      -->
+<details>
+    <summary>GravityActor</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+
+```
+</details>
+
+
+
+</details>
+<!--- Ende GravityActor                                                                                                    -->
+
+
+<!--- Bario                                                                                                      -->
+<details>
+    <summary>Bario</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+
+```
+</details>
+
+
+
+</details>
+<!--- Ende Bario                                                                                                      -->
+
+
+<!--- Carpeto                                                                                                      -->
+<details>
+    <summary>Carpeto</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+
+```
+</details>
+
+
+
+</details>
+<!--- Ende Carpeto                                                                                                      -->
+
+
+<!--- Camelidae                                                                                                      -->
+<details>
+    <summary>Camelidae</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+
+```
+</details>
+
+
+
+</details>
+<!--- Ende Camelidae                                                                                                      -->
+
+
+<!--- Rocket                                                                                                      -->
+<details>
+    <summary>Rocket</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+
+```
+</details>
+
+
+
+</details>
+<!--- Ende Rocket                                                                                                      -->
+
+
+<!--- Blob                                                                                                      -->
+<details>
+    <summary>Blob</summary>
+    
+<details>
+    <summary>Klasse</summary>
+    
+```java
+
+```
+</details>
+
+
+
+</details>
+<!--- Ende Blob                                                                                                      -->
+
+
