@@ -131,18 +131,18 @@ public class Start extends World{
 </details>
 
 Die Startwelt lässt sich nicht vom Spieler beeinflussen, sie spielt eine Animation ab, nach welcher das Spiel gestartet wird. Die Animation lässt sich auch überspringen.  
-Innerhalb des Konstruktors werden 10 Alpakas mit jeweils unterschiedlichen Größen erstellt und der Welt hinzugefügt. Gleichzeitig werden alle Alpacas in der ArrayList `alpacas` gespeichert.  
+Innerhalb des Konstruktors werden 10 Alpakas mit jeweils unterschiedlichen Größen erstellt und der Welt hinzugefügt. Gleichzeitig werden alle Alpakas in der ArrayList `alpacas` gespeichert.  
 ![Start Bildschirm](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/StartScreen.PNG)
 
 Die `act()`Methode besteht aus drei Teilen.  
 Im ersten Teil wird überprüft ob der Nutzer die Leertaste drückt um so den Startbildschirm zu überspringen.  
 
-Der zweite Teil ist für das Verhalten der am Anfang hinzugefügten Alpakas zuständig, da es sich bei den Alpakas um `Sprite` Objekte handelt, welche kein eigenes Verhalten besitzen wird dieses innerhalb der Welt definiert. Am Anfang der Klasse wurde der Integer i definiert, dieser wird in jedem Durchlauf um 1 erhöht (`i++;`) und wird benutzt um den Ablauf der Animationen zu steuern.
-In den ersten 400 Durchläufen der `act()` Methode bewegen die Alpakas sich jeweils um 0-2 Pixel, außerdem besteht eine 1:50 Chance dass die Alpacs sich drehen. Dafür werden die Alpacas um 180° gedreht, was jedoch dazu führt dass sie falsch herum sind, deshalb wird ihr Bild an ihrer vertikalen Achse gespiegelt.  
-Im 401sten Durchlauf werden ihre Bilder auf ein nach links schauendes Alpaka gesetzt ('Alpaca.png' schaut nach rechts) und sie werden in Richtung des linken Bildschirmrands gedreht. 
-In allen Durchläüfen danach bewegen sie sich um jewils zwei Felder (mit der im Konstruktor defnierten Seitenlänge von einem Pixel). Sobald sie den Bildschirmrand erreicht haben werden sie aus der Welt entfernt. Gleichzeitig wird durch `alpacasremoved` mitgezählt wie viele Alpakas bereits entfernt wurden. Sobald die Anzahl der entfernten Alpakas der Anzahl der anfangs hinzugefügten Alpakas entspricht wird das Spiel gestartet, indem die Welt zu `MyWorld` geändert wird.
+Der zweite Teil ist für das Verhalten der am Anfang hinzugefügten Alpakas zuständig, da es sich bei den Alpakas um `Sprite` Objekte handelt, welche kein eigenes Verhalten besitzen wird dieses innerhalb der Welt definiert. Am Anfang der Klasse wurde der Integer `i` definiert, dieser wird in jedem Durchlauf um 1 erhöht (`i++;`) und wird benutzt um den Ablauf der Animationen zu steuern.
+In den ersten 400 Durchläufen der `act()` Methode bewegen die Alpakas sich jeweils um 0-2 Pixel, außerdem besteht eine 1:50 Chance dass sich die Alpakas drehen. Dafür werden die Alpacas um 180° gedreht, was jedoch dazu führt, dass sie falsch herum sind, weshalb ihr Bild vertikal gespiegelt wird.
+Im 401sten Durchlauf werden ihre Bilder auf ein nach links schauendes Alpaka gesetzt ('Alpaca.png' schaut nach rechts) und in Richtung des linken Bildschirmrands gedreht. 
+In allen Durchläufen danach bewegen sie sich um jewils zwei Felder (mit der im Konstruktor definierten Seitenlänge von einem Pixel). Sobald sie den Bildschirmrand erreicht haben werden sie aus der Welt entfernt. Gleichzeitig wird durch `alpacasremoved` mitgezählt wie viele Alpakas bereits entfernt wurden. Sobald die Anzahl der entfernten Alpakas der Anzahl der anfangs hinzugefügten Alpakas entspricht wird das Spiel gestartet, indem die Welt zu `MyWorld` geändert wird.
 
-Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm zuständig. Beim 121sten Durchlauf wird "Carpeto", der Bösewicht, vergrößert, gespiegelt und anschließend hinzugefügt. Im 226sten Durchlauf wird Carpetos Dialogtext hinzugefügt, im 401sten Barios Aufruf an seine Alpakas zu fliehen. Im 461sten Durchlauf wird Barios Text dann auf eine Antwort an Carpeto geändert.  
+Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm zuständig. Beim 121sten Durchlauf wird "Carpeto", der Bösewicht, vergrößert, gespiegelt und anschließend hinzugefügt. Im 226sten Durchlauf wird Carpetos Dialogtext hinzugefügt, im 401sten Barios Aufruf an seine Alpakas zu fliehen. Im 461sten Durchlauf wird Barios Text auf eine Antwort an Carpeto geändert.  
 ![Start Bildschirm bei i > 460](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/StartScreen2.PNG)
 
 </details>
@@ -267,15 +267,17 @@ Die `MyWorld` Welt ist die Spielwelt, weshalb sie am meisten Inhalt hat.
 Innerhalb des Konstruktors werden Bario und ein Kamel erstellt. Anschließend wird die `generateWorld`Funktion aufgerufen, welche für die Weltgenerierung zuständig ist. Zusätzlich wird die "PaintOrder" festgelegt, sie definiert die "Ebenen" auf welchen die Actor angezeigt werden. Die erstgenannten Klassen werden ganz oben angezeigt. Außerdem wird der Text für den Cooldown von Barios Waffe, der Rakete, angezeigt.  
 Die `generateWorld()` generiert zufällige Welten, sodass sich jeder Spieldurchlauf unterscheidet. Am Anfang wird die "Startplattform" erstellt. Sie befindet sich zwischen den x-Koordinaten 0-100 und den y-koordinaten 0-300. Ihre Koordinaten werden als `lastx` und `lasty` zwischengespeichert. Auf ihr wird das im konstruktor generierte Kamel platziert.  
 Anschließend werden in einer Schleife zehn weitere Plattformen (`Ground`) erstellt. Es wird jeweils eine zufällige Verschiebung in x und y-Richtung auf die Koordinaten der vorherig generierten Plattform angewandt. Liegt der neu generierte x/y Wert jedoch außerhalb des gewünschten Spielbereichs wird er angepasst.  
-Sobald alle Plattformen generiert wurden wird Bario aud die zuletzt generierte Plattform gesetzt. Anschließend wird Carpeto und seine durchsichtige Plattform (In Carpeto.class: `gs = new Sprite(new GreenfootImage("groundshadowevil.png"));`) hinzugefügt.  
+Sobald alle Plattformen generiert wurden, wird Bario auf die zuletzt generierte Plattform gesetzt. Anschließend werden Carpeto und seine durchsichtige Plattform (In Carpeto.class: `gs = new Sprite(new GreenfootImage("groundshadowevil.png"));`) hinzugefügt.  
 ![Beispielwelten](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/Welten.png)
 
 Innerhalb der `act()` werden die Verfügbarkeit der Rakete definiert und alle Objekte verschoben.  
 Am Anfang der `act()` wird der "Counter" aktualisiert, er zeigt die Anzahl der bereits durchgeführten `act()`s.  
 Anschließend wird überprüft ob der Spieler Leertaste drückt um die Rakete abzuschießen und ob sie bereits bereit ist. Ist dass der Fall wird die Rakete erstellt und gegebenenfalls gedreht um in die gewünschte Richtung zu starten.
-Sobald die Rakete durch Ausführen von `removeRocket(Rocket rocket)` entfernt wurde und so `rocketremoval = true` gesetzt wurde, wird in der `act()` der `cooldown` aktualisiert. Sobald der `cooldown` also die Differenz der Systemzeiten beim Entfernen und Überprüfen kleiner/gleich 0 ist, wird die Rakete wieder verfügbar gemacht.  
+Sobald die Rakete durch das Ausführen von `removeRocket(Rocket rocket)` entfernt wurde und so `rocketremoval = true` gesetzt wurde, wird in der `act()` der `cooldown` aktualisiert. Sobald der `cooldown` also die Differenz der Systemzeiten beim Entfernen und Überprüfen kleiner/gleich 0 ist, wird die Rakete wieder verfügbar gemacht.  
 Anschließend werden sämtliche `Actor` in der Welt um ein Feld nach links verschoben. Da alle Objekte gleichmäßig verschoben werden entsteht eine Illusion einer unendlichen Welt.  
 Die Funktionen `getBario()` und `getCarpeto()` geben das jeweils gewünschte Objekt zurück.
+
+![MyWorld](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/MyWorld.PNG)
 
 </details>
 <!--- Ende MyWorld                                                                                                       -->
@@ -323,7 +325,7 @@ public class GameOver extends World{
 ```
 </details>
 
-Die `GameOver`Welt ist simpel aufgebaut. Im Konstruktor wird das Hintergrundbild gesetzt. Bei jedem Durchlauf wird der Integer i um 1 erhöht, er zählt also mit. Bei jedem 50sten Durchlauf wird anschließend das hintergrundbild geändert. Die Hintergrundbilder wurden mit einem externen Programm erstellt. Sobald der Nutzer die Welt anklickt wird der `MyWorld`Bildschirm geöffnet, sodass er es erneut versuchen kann.
+Die `GameOver`Welt ist simpel aufgebaut. Im Konstruktor wird das Hintergrundbild gesetzt. Bei jedem Durchlauf wird der Integer `i` um 1 erhöht, er zählt also mit. Bei jedem 50sten Durchlauf wird anschließend das Hintergrundbild geändert. Die Hintergrundbilder wurden mit einem externen Programm erstellt. Sobald der Nutzer die Welt anklickt wird der `MyWorld`Bildschirm geöffnet, sodass er es erneut versuchen kann.
 ![GameOver Bildschirm](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/BarioGameplay2.gif)
 
 [Benutzte Schriftart](https://fontmeme.com/fonts/mayan-karla-vazquez-font/)
@@ -402,9 +404,9 @@ public class Victory extends World{
 
 Die Welt `Victory`, welche nach einem Sieg von Bario geöffnet wird, ist gleich wie die `Start` Welt aufgebaut.  
 Im Konstruktor wird ein `Sprite` mit dem Bild von Carpeto erstellt, welches vergrößert und gespiegelt wurde.  
-Innerhalb der `act()` wird erneut der Ablauf und das Verhalten der Alpakas gesteuert. Bei jedem urchlauf wird der Integer i um einen erhöht.  
+Innerhalb der `act()` wird erneut der Ablauf und das Verhalten der Alpakas gesteuert. Bei jedem Durchlauf wird der Integer `i` um einen erhöht.  
 ![Victory Bildschirm](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/VictoryScreen.PNG)  
-Im 61sten Durchlauf wird Carpetos Text angezeigt, welcher ausdrückt dass er besiegt wurde. Im 181sten Durchlauf Wird Barios Antwort angezeigt. Im 241sten Durchlauf erscheinen dann wieder Barios Alpakas. Es wird der gleiche Code wie bei der `Start`Welt benutzt.  
+Im 61sten Durchlauf wird Carpetos Text angezeigt, welcher ausdrückt das er besiegt wurde. Im 181sten Durchlauf wird Barios Antwort angezeigt. Im 241sten Durchlauf erscheinen wieder Barios Alpakas. Es wird der gleiche Code wie bei der `Start`Welt benutzt.  
 Im zweiten Teil der `act()` wird das Verhalten der Alpakas definiert. Wie bei der `Start`Welt bewegen sie sich jewils um 2 und wechseln dabei gelegentlich die Richtung.
 ![Victory Bildschirm bei i > 242](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/VictoryScreen2.PNG)
 </details>
@@ -435,7 +437,12 @@ public class Sprite extends Actor{
 ```
 </details>
 
-Die `Sprite`Klasse wird in den Welten `Start`, `MyWorld`, und `Victory` benutzt. Da diese auch ihr Verhalten kontrollieren und die Sprites also eigentlich nur Bilder sind, tun sie auch nichts. Im Konstruktor wird das von ihnen dargestellte Bild definiert.
+![GroundShadow](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/groundshadow.png)
+![GroundShadow](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/groundshadowevil.png)
+![GroundShadow](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/Alpaca.png)
+![GroundShadow](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/Carpeto.png)
+
+Die `Sprite`Klasse wird in den Welten `Start`, `MyWorld`, und `Victory` benutzt. Da diese auch ihr Verhalten kontrollieren und die Sprites letztendlich nur Bilder sind, tun sie auch nichts. Im Konstruktor wird das von ihnen dargestellte Bild definiert.
 
 </details>
 <!--- Ende Sprite                                                                                                      -->
@@ -497,15 +504,15 @@ public class Ground extends Actor{
 ```
 </details>
 
-![Ground]()
+![Ground](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/ground.png)
 
 Die `Ground` Klasse beschreibt das Verhalten der Plattformen.  
 Im Konstruktor wird ein `Sprite` mit einem Bild von einem Teppich erstellt. Da es sich um einen Sprite handelt, hat er keinen Effekt.  
-In der `act()` wird als erstes überprüft ob die Plattform am Rand des Spielbereichs ist, was passieren kann da sämtliche Akteure in der `MyWorld` konstant nach links verschoben werden. Falls das der Fall ist wird sie an den rechten Rand gesetzt von wo sie sich erneut nach links bewegt.
-Anschließend wird ihr "Schatten" verschoben, sodass er an die Plattform selbst anknüpft. Falls er (nach Erstellen der Welt) noch nicht hinzugefügt wurde, wird er hinzugefügt.  
-Die Transparenz der Plattformen wird verringert wenn ein `GravityActor` auf ihnen steht (siehe `GravityActor.gravity()`) oder wenn sie von einem `Blob` getroffen werden, sie sollen aber auch regeneriern können, was in der `act()` geschieht. Wenn ihre Transparenz nicht bei 255 (dem Maximalwert) liegt und ihre Transparenz beim letzten Durchlauf nicht verändert wurde (`!loweredtransparency`) wird ihre Transparenz erhöht. Anschließend wird `loweredtransparency` auf `false` gesetzt. Nur wenn es von einem anderen Objekt heruntergesetzt wird soll die Plattform nicht "regenerieren".  
+In der `act()` wird als erstes überprüft ob die Plattform am Rand des Spielbereichs ist, was geschieht, da sämtliche Akteure in der `MyWorld` konstant nach links verschoben werden. Falls das der Fall ist wird sie an den rechten Rand gesetzt von wo sie sich erneut nach links bewegt.
+Anschließend wird ihr "Schatten" verschoben, sodass er an die Plattform selbst anknüpft. Falls er (nach dem Erstellen der Welt) noch nicht hinzugefügt wurde, wird er hinzugefügt.  
+Die Transparenz der Plattformen wird verringert wenn ein `GravityActor` auf ihnen steht (siehe `GravityActor.gravity()`) oder wenn sie von einem `Blob` getroffen werden, sie "regenerieren" sich mit der Zeit, was in der `act()` geschieht. Wenn ihre Transparenz nicht bei 255 (dem Maximalwert) liegt und ihre Transparenz beim letzten Durchlauf nicht verändert wurde (`!loweredtransparency`) wird ihre Transparenz erhöht. Anschließend wird `loweredtransparency` auf `false` gesetzt. Nur wenn es von einem anderen Objekt heruntergesetzt wird "regeneriert" die Plattform nicht.  
   
-Die Funktion `lowerTransparency(int x)` senkt die Transparenz der Plattform um den gewünschten Wert `x`. Bevor das passieren kann wird noch der Wert `x` mit der aktuellen Transparenz verglichen. Wenn die gewünschte Transparenz kleiner/gleich 0 wäre wird die Plattform und ihr "Schatten" entfernt und die Funktion beendet. Ist das nicht der Fall wird die transparenz der Plattform und die ihres Schattens angepasst und `loweredtransparency` auf `true` gesetzt, da sie sonst "regenerieren" würde.  
+Die Funktion `lowerTransparency(int x)` senkt die Transparenz der Plattform um den gewünschten Wert `x`. Bevor das passieren kann wird noch der Wert `x` mit der aktuellen Transparenz verglichen. Wenn die gewünschte Transparenz kleiner/gleich 0 ist wird die Plattform und ihr "Schatten" entfernt und die Funktion beendet. Ist das nicht der Fall wird die Transparenz der Plattform und die ihres Schattens angepasst und `loweredtransparency` auf `true` gesetzt, da sie sonst "regenerieren" würde.  
   
 Die Funktion setTransparency wird derzeit nicht benutzt. Sie setzt die Transparenz der Plattform und ihres "Schattens" auf den gewünschten Wert.
 
@@ -564,7 +571,7 @@ Die `GravityActor` Klasse selbst tritt im Spiel selbst nicht in Erscheinung, sta
 Die `gravity()` Funktion ist für die Gravitation zuständig, sie besteht aus drei Teilen.   
   
 Im ersten Teil wird überprüft ob unter dem Mittelpunkt des `GravityActors` eine Plattform (`Ground`) existiert. Dafür wird eine Liste mit Plattformen an dieser Stelle abgerufen. Wenn diese Liste leer ist (also 0 Elemente besitzt) wird die Position des `GravityActors` um `v` Felder nach unten verschoben und `v` anschließend um 1 erhöht. Wenn die Liste allerdings mit Inhalt gefüllt ist wird `v` auf 0 gesetzt und die Transparenz der Plattformen um 1 verringert (siehe Ground).  
-Im zweiten Teil wird überprüft ob der `GravityActor` sich mit einer Plattform überschneidet während er nicht auf einer Plattform steht. Ist dass der Fall wird er auf die Plattform gesetzt, da er sonst genau auf einer Plattform landen muss um nicht hindurchzufallen. Das kann passieren da die Plattformen (`Ground`) nur wenige Pixel dick sind und der `GravityActor` eine höhere Fallgeschwindigkeit `v` als die Breite der Plattformen besitzen kann. Außerdem wird `jump` auf false gesetzt, falls der `GravityActor` also im Sprung war, ist dieser jetzt beendet.  
+Im zweiten Teil wird überprüft ob der `GravityActor` sich mit einer Plattform überschneidet während er nicht auf einer Plattform steht. Ist das der Fall wird er auf die Plattform gesetzt, da er sonst genau auf einer Plattform landen muss um nicht hindurchzufallen. Das kann passieren da die Plattformen (`Ground`) nur wenige Pixel dick sind und der `GravityActor` eine höhere Fallgeschwindigkeit `v` als die Breite der Plattformen besitzen kann. Außerdem wird `jump` auf false gesetzt, falls der `GravityActor` im Sprung war, ist dieser jetzt beendet.  
 Im letzten Teil wird überprüft ob sich der `GravityActor` am unteren Rand des Spielbildschirms befindet. Falls ja wird er entfernt und das Spiel ggf. beendet.
 
 </details>
@@ -617,6 +624,8 @@ public class Bario extends GravityActor{
 }
 ```
 </details>
+
+![Bario](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/baby2.png)
 
 Die Klasse `Bario` ist eine Erweiterung der `GravityActor` Klasse.  
 In der `act()` wird überprüft ob eine der Pfeiltasten gedrückt wird. Wenn die Pfeiltaste nach links oder rechts gedrückt wird, bewegt sich Bario mit der Geschwindigkeit `speed` in die gewünschte Richtung. Gleichzeitig wird festgehalten in welche Richtung Bario sich zuletzt bewegt hat, was für die Startrichtung der Rakete wichtig ist. Wird die Pfeiltaste nach oben gedrückt wird `jump` auf `true` gesetzt.  
@@ -733,15 +742,17 @@ public class Carpeto extends GravityActor{
 ```
 </details>
 
+![Carpeto](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/Carpeto.png)
+
 Die Klasse `Carpeto` ist eine Erweiterung der `GravityActor` Klasse.  
-Im Konstruktor wird Carpetos fliegender Teppich (ein `Sprite`) erstellt und `bario` auf den "aktuellen" `Bario`  gesetzt.
-Carpetos Verhalten variiert, anfangs (`stage2 = false`) bewegt er sich nur bei ungefär jedem zwanzigsten Durchlauf, dann jedoch sehr weit. Seine Bewegungsrichtung wird dabei durch seine relative Position zu `bario` entschieden. Wenn er sich auf einer anderen Höhe als Bario befindet, bewegt er sich 30 Felder in die Richtung in der sich Bario (`b`) befindet. Das gleiche gilt für die x-Richtung. Da Carpeto zu diesem Zeitpunkt noch seinen Teppich besitzt, wird dessen position auf Carpetos Position angepasst.  
+Im Konstruktor wird Carpetos fliegender Teppich (ein `Sprite`) erstellt und `b` auf den "aktuellen" Bario  gesetzt.
+Carpetos Verhalten variiert, anfangs (`stage2 = false`) bewegt er sich nur bei ungefär jedem zwanzigsten Durchlauf, dann jedoch sehr weit. Seine Bewegungsrichtung wird dabei durch seine relative Position zu `b` entschieden. Wenn er sich auf einer anderen Höhe als Bario befindet, bewegt er sich 30 Felder in die Richtung in der sich Bario (`b`) befindet. Das gleiche gilt für die x-Richtung. Da Carpeto zu diesem Zeitpunkt noch seinen Teppich besitzt, wird dessen Position auf Carpetos Position angepasst.  
   
-Wenn sein Teppich allerdings schon zerstört wurde, `stage2` also zwingend auf `true` gesetzt ist (siehe `hit()`), verhält er sich ähnlich wie `Camelidae`. Da nun die Gravitation auch auf ihn gilt und er sich nicht mehr sprunghaft bewegt, müssen sich seine Bewegungsabläufe den Umständen anpassen. Am Anfang des neuen Bewegungsablaufs wird überprüft ob sich Carpeto in einem Sprung befindet. Falls ja wird er in y-Richtung nach oben bewegt. Anschließend wird überprüft ob sich unter ihm eine Plattform befindet, falls nicht wird `jump` auf `true` gesetzt, er springt also ab dem nächsten Durchlauf. Auch wenn er sich unter `bario` befindet oder seine y-koordinate höher als 375, er also unten auf dem Bildschirm ist wird `jump` auf `true` gesetzt.  
+Wenn sein Teppich zerstört wurde, `stage2` also zwingend auf `true` gesetzt ist (siehe `hit()`), verhält er sich ähnlich wie `Camelidae`. Da nun die Gravitation auch auf ihn gilt und er sich nicht mehr sprunghaft bewegt, müssen sich seine Bewegungsabläufe den Umständen anpassen. Am Anfang des neuen Bewegungsablaufs wird überprüft ob sich Carpeto in einem Sprung befindet. Falls ja wird er in y-Richtung nach oben bewegt. Anschließend wird überprüft ob sich unter ihm eine Plattform befindet, falls nicht wird `jump` auf `true` gesetzt, er springt also ab dem nächsten Durchlauf. Auch wenn er sich unter Bario (`b`) befindet oder seine y-koordinate höher als 375, er also unten auf dem Bildschirm ist wird `jump` auf `true` gesetzt.  
 Anschließend bewegt er sich in die Richtung von Bario (`b`), falls er sich nicht bereits mit ihm überschneidet.  
 Wie bei `Bario` wird seine Geschwindigkeit wieder auf den Ursprungswert (3) gesetzt und `gravity()` aufgerufen.  
   
-Unabhängig von `stage2` generiert er bei ungefär jedem 40sten Durchlauf ein `Blob`, welches auf Bario (`b`) zielt.  
+Unabhängig von `stage2` generiert er bei ungefähr jedem 40sten Durchlauf ein `Blob`, welches auf Bario (`b`) zielt.  
   
 Die Funktion `hit()` zieht Bario eins seiner 3 Leben ab. Seine aktuellen Leben kann man an der Transparenz seines Teppiches erkennen, welche bei jedem Abzug von einem Leben abnimmt. Wenn seine Anzahl an Leben `lifes` 0 beträgt wird `stage2` auf `true` gesetzt und sein Teppich entfernt. `hit()` wird in `Rocket` aufgerufen.
 </details>
@@ -835,14 +846,17 @@ public class Camelidae extends GravityActor{
 ```
 </details>
 
+![Trampeltier](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/camel.png)
+![Apaca](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/Alpaca.png)
+
 Die Klasse `Camelidae` ist eine Erweiterung der `GravityActor` Klasse.  
 Im Konstruktor wird `target` definiert, was zu Anfang Bario entspricht.  
 In der `act()` wird als erstes `gravity()` aufgerufen. Falls das Kamel dabei entfernt wird ist `getWorld() == null` `true` und die Funktion wird beendet, da sonst eine `NullPointerException` auftritt, da das Kamel nicht mehr in der `MyWorld` ist.  
-Wie bei `Carpeto` wird überprüft ob `jump` ` true` ist, falls ja wird es auf der nach oben bewegt. Wenn es keinen Boden unter sich hat oder unter `target` ist wird `jump = true` gesetzt.  
+Wie bei `Carpeto` wird überprüft ob `jump` ` true` ist, falls ja wird es nach oben bewegt. Wenn es keinen Boden unter sich hat oder unter `target` ist wird `jump = true` gesetzt.  
 Anschließend wird das Kamel auf der x-Ebene in Richtung von `target` bewegt, falls sie sich nicht bereits überschneiden.  
 Das Kamel kann entweder böse (`evil = true`) oder gut (`evil = false`) sein. Falls es böse ist und sich mit Bario überschneidet wird `bario.speed` auf 1 und (`this.`)`speed` auf 0 gesetzt. Falls es gut ist passiert dasselbe mit Carpeto.  
   
-Die Funktion `setEvil(boolean e)` setzt `evil` auf `e` und passt anchließend `target` an. Falls es böse ist wird das Ziel auf Bario gesetzt, falls es gut ist auf Carpeto. Außerdem wird das bild angepasst um den Spieler einen Überblick zu ermöglichen ob Das Kamel böseoder gut ist. Die Alpacas sind auf Barios Seite, die Trampeltiere (hier camel genannt) sind auf Carpetos Seite.  
+Die Funktion `setEvil(boolean e)` setzt `evil` auf `e` und passt anchließend `target` an. Falls es böse ist wird das Ziel auf Bario gesetzt, falls es gut ist auf Carpeto. Außerdem wird das Bild angepasst um den Spieler einen Überblick zu ermöglichen ob das Kamel böse oder gut ist. Die AlpaKas sind auf Barios Seite, die Trampeltiere (hier "camel" genannt) sind auf Carpetos Seite.  
   
 Die Funktion `isEvil()` gibt `evil` zurück.
 
@@ -907,6 +921,8 @@ public class Rocket extends Actor{
 }
 ```
 </details>
+
+![Rocket](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/rocket.png)
 
 Sobald die `Rocket` zur Welt hinzugefügt wurde, wird `w` auf die aktuelle Welt vom Typ `MyWorld` gesetzt. Die `MyWorld` ist für den Cooldown und die Verfügbarkeit der `Rocket` zuständig (siehe MyWorld).  
 In der `act()` wird der Integer `rocket` bei jedem Durchlauf um 1 erhöht. Anschließend wird geprüft ob die Rakete sich mit einem `Camelidae` überschneidet und ob dieses ggf. böse ist. Falls ja wird die Rakete entfernt, das `Camelidae` gut (`evil = false`) und die Funktion beendet.  
@@ -976,13 +992,13 @@ public class Blob extends Actor{
 ```
 </details>
 
-`Blob` ist die Waffe von Carpeto. Im Konstruktor werden die aktuelle x und y-Koordinate eines `Actor` als `x` und `y` gespeichert.  
+![Blob](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/Magie.png)
+
+`Blob` ist die Waffe von Carpeto. Im Konstruktor werden die aktuellen Koordinaten eines `Actor` als `x` und `y` gespeichert.  
 In der `act()` wird der Blob in Richtung von `x` und `y` gedreht und bewegt sich anschließend um einen zufälligen Wert zwischen 0 und 4. Anschließend wird die Rotation auf einen zufälligen Wert zwischen 0 und 359 gesetzt.  
-Danach wird überprüft ob der `Blob` sich mit beliebigen Objekten überschneidet. Falls ja wird überprüft um was für Objekte es sich handelt. Wenn es ein Objekt des Typs `Ground` ist, wird dessen Transparenz mit `g.lowerTransparency(100)` gesenkt und `remove` auf `true` gesetzt. Wenn der `Ground g` danach noch existiert besteht eine 1:20 Chance dass auf ihm ein `Camelidae` auftaucht.  Wenn es ein Objekt des Typs `Camelidae` ist wird dieses böse und `remove` auf `true` gesetzt.  
+Danach wird überprüft ob der `Blob` sich mit beliebigen Objekten überschneidet. Falls ja wird überprüft um was für Objekte es sich handelt. Wenn es ein Objekt des Typs `Ground` ist, wird dessen Transparenz mit `g.lowerTransparency(100)` gesenkt und `remove` auf `true` gesetzt. Wenn der `Ground g` danach noch existiert besteht eine 1:20 Chance dass auf ihm ein `Camelidae` auftaucht.  Wenn es ein Objekt des Typs `Camelidae` ist, wird dieses böse und `remove` auf `true` gesetzt.  
 Es wird überprüft ob der `Blob` seine Zielkoordinaten erreicht hat, falls ja wird `remove` auf `true` gesetzt. Am Ende wird überprüft ob `remove == true` gilt, wenn das der Fall ist wird der `Blob` entfernt.
 
 
 </details>
 <!--- Ende Blob                                                                                                      -->
-
-
