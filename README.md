@@ -1,5 +1,5 @@
 # Informatik Projekt 2 - Bario
-*von Julian und Benedict, 12e*
+*von Julian und Benedict, 12e*  
 [Projektseite auf Greenfoot.org](https://www.greenfoot.org/scenarios/23681)
 
 ## Inhaltsverzeichnis
