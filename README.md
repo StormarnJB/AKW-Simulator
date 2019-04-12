@@ -152,9 +152,114 @@ Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm z
   <summary>Gesamte Klasse</summary>
  
 ```java 
+import greenfoot.*; 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
+import java.util.Random;
+
+public class MyWorld extends World{
+
+    Bario bario;
+    Camelidae camelstart;
+    Carpeto carpeto;
+    int counter = 0;
+    private boolean rocketunavailable = false;
+    private boolean rocketremoval = false;
+    private long cooldown = 0;
+    private long cooldownstart;
+
+    public MyWorld(){
+        super(600, 400, 1);
+        bario = new Bario();
+        camelstart = new Camelidae(bario);
+
+        generateWorld();
+        //Level
+
+        setPaintOrder(Bario.class, Rocket.class, Camelidae.class, Carpeto.class, Ground.class, Sprite.class);
+        showText("Cooldown: " + cooldown, 100, 50);
+    }
+
+    public void act(){
+        showText(counter + "", 100, 80);
+        counter += 1;
+
+        //Raketenmanager
+        if(Greenfoot.isKeyDown("space") && !rocketunavailable){
+            rocketunavailable = true;
+            Rocket rocket = new Rocket();
+            addObject(rocket, bario.getX(), bario.getY());
+            if(bario.isFacingLeft()) rocket.turn(180);
+        }
+        //Counter bei Raketenentfernung
+        if(rocketremoval){
+            cooldown = cooldownstart - System.currentTimeMillis() + 2000;
+            showText("Cooldown: " + cooldown, 100, 50);
+        }
+        //Abschluss der Raketenentfernung
+        if(rocketremoval && cooldown <= 0){
+            rocketunavailable = false;
+            rocketremoval = false;
+            cooldown = 0;
+            showText("Cooldown: " + cooldown, 100, 50);
+        }
+
+        List<Actor> actorlist = getObjects(Actor.class);
+        for(Actor a : actorlist){
+            a.setLocation(a.getX() - 1, a.getY());
+        }
+    }
+
+    public void removeRocket(Rocket rocket){
+        removeObject(rocket);
+        cooldown = 0;
+        cooldownstart = System.currentTimeMillis();
+        rocketremoval = true;
+
+    }
+
+    public void generateWorld(){
+        Random r = new Random();
+
+        int lastx = r.nextInt(100);
+        int lasty = r.nextInt(300);
+        addObject(new Ground(), lastx, lasty);
+
+        addObject(camelstart, lastx, lasty);
+
+        for(int i = 0; i < 10; i++){
+            int x = lastx + r.nextInt(200);
+            if(x > 600) x = x - 600;
+            lastx = x;
+            int y = lasty - r.nextInt(250);
+            if(y < 150) y = y + 250;
+            if(y > 350) y = y - 50;
+            lasty = y;
+            addObject(new Ground(), x, y);
+        }
+
+        addObject(bario, lastx, lasty);
+
+        carpeto = new Carpeto(bario);
+        addObject(carpeto, 100, 100);
+        addObject(carpeto.gs, 0 , 0);
+    }
+    
+    public Bario getBario(){
+        return bario;
+    }
+    
+    public Carpeto getCarpeto(){
+        return carpeto;
+    }
+}
 
 ```
 </details>
+
+
 
 </details>
 <!--- Ende MyWorld                                                                                                       -->
@@ -168,10 +273,44 @@ Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm z
   <summary>Gesamte Klasse</summary>
  
 ```java 
+import greenfoot.*;
 
+public class GameOver extends World{
+    
+    int i = 0;
+    GreenfootImage image1 = new GreenfootImage("GameOver1.jpg");
+    GreenfootImage image2 = new GreenfootImage("GameOver2.jpg");
+    GreenfootImage image3 = new GreenfootImage("GameOver3.jpg");
+    GreenfootImage image4 = new GreenfootImage("GameOver4.jpg");
+    GreenfootImage image5 = new GreenfootImage("GameOver5.jpg");
+    
+    public GameOver(){
+        super(600, 400,1);
+        getBackground().drawImage(image1, 0, 0);
+    }
+
+    public void act(){
+        switch(i){
+            case 50: setBackground(image2); break;
+            case 100: setBackground(image3); break;
+            case 150: setBackground(image4); break;
+            case 200: setBackground(image5); break;
+        }
+        
+        if(Greenfoot.mouseClicked(this)){
+            Greenfoot.setWorld(new MyWorld());
+        }
+        
+        i++;
+    }
+}
 ```
 </details>
 
+Die `GameOver`Welt ist simpel aufgebaut. Im Konstruktor wird das Hintergrundbild gesetzt. Bei jedem Durchlauf wird der Integer i um 1 erhöht, er zählt also mit. Bei jedem 50sten Durchlauf wird anschließend das hintergrundbild geändert. Die Hintergrundbilder wurden mit einem externen Programm erstellt. Sobald der Nutzer die Welt anklickt wird der `MyWorld`Bildschirm geöffnet, sodass er es erneut versuchen kann.
+![GameOver Bildschirm](https://raw.githubusercontent.com/StormarnJB/BarioTheGame/master/Screenshots/BarioGameplay2.gif)
+
+[Benutzte Schriftart](https://fontmeme.com/fonts/mayan-karla-vazquez-font/)
 </details>
 <!--- Ende GameOver                                                                                                       -->
 
@@ -246,10 +385,11 @@ public class Victory extends World{
 </details>
 
 Die Welt `Victory`, welche nach einem Sieg von Bario geöffnet wird, ist gleich wie die `Start` Welt aufgebaut.  
-Im konstruktor wird ein `Sprite` mit dem Bild von Carpeto erstellt, welches vergrößert und gespiegelt wurde.  
+Im Konstruktor wird ein `Sprite` mit dem Bild von Carpeto erstellt, welches vergrößert und gespiegelt wurde.  
 Innerhalb der `act()` wird erneut der Ablauf und das Verhalten der Alpakas gesteuert. Bei jedem urchlauf wird der Integer i um einen erhöht.  
+![Victory Bildschirm](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/VictoryScreen.PNG)  
 Im 61sten Durchlauf wird Carpetos Text angezeigt, welcher ausdrückt dass er besiegt wurde. Im 181sten Durchlauf Wird Barios Antwort angezeigt. Im 241sten Durchlauf erscheinen dann wieder Barios Alpakas. Es wird der gleiche Code wie bei der `Start`Welt benutzt.  
 Im zweiten Teil der `act()` wird das Verhalten der Alpakas definiert. Wie bei der `Start`Welt bewegen sie sich jewils um 2 und wechseln dabei gelegentlich die Richtung.
-
+![Victory Bildschirm bei i > 242](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/VictoryScreen2.PNG)
 </details>
 <!--- Ende Victory                                                                                                      -->
