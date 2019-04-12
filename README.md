@@ -18,7 +18,7 @@
 
 #### Das Spiel <a name="Idee"></a>
 
-Das Spiel „Bario“ handelt von einem Alpakafarmer, der von dem bösen „Carpeto“ verfolgt wird und auf fliegende Teppiche springen muss um zu überleben. Carpeto möchte alle Camelidae (Kamele, Lamas, Alpakas etc.) unterwerfen und so auch die Alpakas von Bario. Dieser kann sich mithilfe einer Rakete, die er als Hobby-Ingenieur entwickelt hat, zur Wehr setzten und Carpeto angreifen, fällt Bario allerdings herunter hat Carpeto gewonnen und das Spiel ist vorbei. Carpetos Angriffe bestehen darin die Teppiche mit seinen Angriffen zu zerstören, sodass Bario leichter herunterfallen kann. Die Teppiche verschwinden ebenfalls wenn man sich zu lange auf einem aufhält. Carpeto kann besiegt werden indem man ihn mit der Rakete abschießt. Schafft man dies fällt er von seinem individuell gesteuerten Teppich (lebt aber noch weiter) und kann endgültig besiegt werden indem er hinunterfällt. Das gelingt durch die alle 10 Sekunden erscheinenden Kamele, die ebenfalls mit der Rakete abgeschossen werden können und sich so zu Alpakas verwandeln. Die Kamele gehen auf Bario los, verlangsamen ihn und lassen die Teppiche schneller verschwinden, die Alpakas tun das gleiche bei Bario. Carpeto kann die Alpakas allerdings auch wieder zurück zu Kamelen verwandeln die dann wieder auf Bario losgehen. Wenn Carpeto herunterfällt ist er besiegt, das Spiel ist vorbei und man hat gewonnen.
+Das Spiel „Bario“ handelt von einem Alpakafarmer, der von dem bösen „Carpeto“ verfolgt wird und auf fliegende Teppiche springen muss um zu überleben. Carpeto möchte alle Kamele (*=Camelidae*) (Trampeltier, Lamas, Alpakas etc.) unterwerfen und so auch die Alpakas von Bario. Dieser kann sich mithilfe einer Rakete, die er als Hobby-Ingenieur entwickelt hat, zur Wehr setzten und Carpeto angreifen, fällt Bario allerdings herunter hat Carpeto gewonnen und das Spiel ist vorbei. Carpetos Angriffe bestehen darin die Teppiche mit seinen Angriffen zu zerstören, sodass Bario leichter herunterfallen kann. Die Teppiche verschwinden ebenfalls wenn man sich zu lange auf einem aufhält. Carpeto kann besiegt werden indem man ihn mit der Rakete abschießt. Schafft man dies fällt er von seinem individuell gesteuerten Teppich (lebt aber noch weiter) und kann endgültig besiegt werden indem er hinunterfällt. Das gelingt durch die alle 10 Sekunden erscheinenden Kamele, die ebenfalls mit der Rakete abgeschossen werden können und sich so zu Alpakas verwandeln. Die Kamele gehen auf Bario los, verlangsamen ihn und lassen die Teppiche schneller verschwinden, die Alpakas tun das gleiche bei Bario. Carpeto kann die Alpakas allerdings auch wieder zurück zu Kamelen verwandeln die dann wieder auf Bario losgehen. Wenn Carpeto herunterfällt ist er besiegt, das Spiel ist vorbei und man hat gewonnen.
 Das Spiel kann nach dem Scheitern direkt durch einen Linksklick neugestartet werden, sodass man nicht jedes Mal wieder die Einleitung anschauen muss.
 
 #### Greenfoot <a name="Greenfoot"></a>
@@ -504,7 +504,7 @@ Die Transparenz der Plattformen wird verringert wenn ein `GravityActor` auf ihne
   
 Die Funktion `lowerTransparency(int x)` senkt die Transparenz der Plattform um den gewünschten Wert `x`. Bevor das passieren kann wird noch der Wert `x` mit der aktuellen Transparenz verglichen. Wenn die gewünschte Transparenz kleiner/gleich 0 wäre wird die Plattform und ihr "Schatten" entfernt und die Funktion beendet. Ist das nicht der Fall wird die transparenz der Plattform und die ihres Schattens angepasst und `loweredtransparency` auf `true` gesetzt, da sie sonst "regenerieren" würde.  
   
-Die Funktion setTransparency wird derzeit nicht benutzt. Sie setzt die Transparenz der plattform und ihres "Schattens" auf den gewünschten Wert.
+Die Funktion setTransparency wird derzeit nicht benutzt. Sie setzt die Transparenz der Plattform und ihres "Schattens" auf den gewünschten Wert.
 
 </details>
 <!--- Ende Ground                                                                                                      -->
@@ -688,15 +688,11 @@ public class Carpeto extends GravityActor{
             int cx = getX();
             int cy = getY();
 
-            if(jump){
-                setLocation(getX(), getY() - 15);
-            } 
+            if(jump) setLocation(getX(), getY() - 15);
 
             if(getObjectsAtOffset(0, getImage().getHeight()/2, Ground.class).size() == 0)jump = true;
 
-            if(cy - by > getImage().getHeight()){
-                jump = true; 
-            }
+            if(cy - by > getImage().getHeight()) jump = true;
 
             if(cx != bx){
                 if(cx - bx > getImage().getWidth()/2){
@@ -730,11 +726,21 @@ public class Carpeto extends GravityActor{
         }
     }
 }
+
 ```
 </details>
 
-
-
+Die Klasse `Carpeto` ist eine Erweiterung der `GravityActor` Klasse.  
+Im Konstruktor wird Carpetos fliegender Teppich (ein `Sprite`) erstellt und `bario` auf den "aktuellen" `Bario`  gesetzt.
+Carpetos Verhalten variiert, anfangs (`stage2 = false`) bewegt er sich nur bei ungefär jedem zwanzigsten Durchlauf, dann jedoch sehr weit. Seine Bewegungsrichtung wird dabei durch seine relative Position zu `bario` entschieden. Wenn er sich auf einer anderen Höhe als Bario befindet, bewegt er sich 30 Felder in die Richtung in der sich Bario (`b`) befindet. Das gleiche gilt für die x-Richtung. Da Carpeto zu diesem Zeitpunkt noch seinen Teppich besitzt, wird dessen position auf Carpetos Position angepasst.  
+  
+Wenn sein Teppich allerdings schon zerstört wurde, `stage2` also zwingend auf `true` gesetzt ist (siehe `hit()`), verhält er sich ähnlich wie `Camelidae`. Da nun die Gravitation auch auf ihn gilt und er sich nicht mehr sprunghaft bewegt, müssen sich seine Bewegungsabläufe den Umständen anpassen. Am Anfang des neuen Bewegungsablaufs wird überprüft ob sich Carpeto in einem Sprung befindet. Falls ja wird er in y-Richtung nach oben bewegt. Anschließend wird überprüft ob sich unter ihm eine Plattform befindet, falls nicht wird `jump` auf `true` gesetzt, er springt also ab dem nächsten Durchlauf. Auch wenn er sich unter `bario` befindet oder seine y-koordinate höher als 375, er also unten auf dem Bildschirm ist wird `jump` auf `true` gesetzt.  
+Anschließend bewegt er sich in die Richtung von Bario (`b`), falls er sich nicht bereits mit ihm überschneidet.  
+Wie bei `Bario` wird seine Geschwindigkeit wieder auf den Ursprungswert (3) gesetzt und `gravity()` aufgerufen.  
+  
+Unabhängig von `stage2` generiert er bei ungefär jedem 40sten Durchlauf ein `Blob`, welches auf Bario (`b`) zielt.  
+  
+Die Funktion `hit()` zieht Bario eins seiner 3 Leben ab. Seine aktuellen Leben kann man an der Transparenz seines Teppiches erkennen, welche bei jedem Abzug von einem Leben abnimmt. Wenn seine Anzahl an Leben `lifes` 0 beträgt wird `stage2` auf `true` gesetzt und sein Teppich entfernt. `hit()` wird in `Rocket` aufgerufen.
 </details>
 <!--- Ende Carpeto                                                                                                      -->
 
@@ -747,11 +753,95 @@ public class Carpeto extends GravityActor{
     <summary>Klasse</summary>
     
 ```java
+import greenfoot.*; 
+import java.util.List;
 
+public class Camelidae extends GravityActor{
+
+    Actor target;
+    boolean evil = true;
+    int speed = 2;
+    GreenfootImage camelimage = new GreenfootImage("camel.png");
+    GreenfootImage alpacaimage = new GreenfootImage("Alpaca.png");
+
+    public Camelidae(Actor t){
+        target = t;
+    }
+
+    public void act(){
+        gravity();
+        if(getWorld() == null) return;
+
+        int tx = target.getX();
+        int ty = target.getY();
+        int cx = getX();
+        int cy = getY();
+
+        if(jump) setLocation(getX(), getY() - 18); 
+
+        if(getObjectsAtOffset(0, getImage().getHeight()/2, Ground.class).size() == 0)jump = true;
+
+        if(cy - ty > getImage().getHeight()) jump = true;
+
+        if(cx != tx){
+            if(cx - tx > getImage().getWidth()/2){
+                setLocation(cx - speed, getY());
+            } else if (cx - tx < getImage().getWidth()/2) {
+                setLocation(cx + speed, getY());
+            }
+
+        }
+
+        speed = 2;
+
+        if(evil){
+            if(getOneIntersectingObject(Bario.class) != null){
+                Bario bario = (Bario) target;
+                bario.speed = 1;
+                speed = 0;
+            }
+        } else {
+            if(getOneIntersectingObject(Carpeto.class) != null){
+                Carpeto carpeto = (Carpeto) target;
+                carpeto.speed = 1;
+                speed = 0;
+            }
+        }
+
+    }
+
+    public void setEvil(boolean e){
+        evil = e;
+        MyWorld w = (MyWorld) getWorld();
+            
+        if(evil){
+            target = w.getBario();
+            setImage(camelimage);
+        }
+        
+        if(!evil){
+            target = w.getCarpeto();
+            setImage(alpacaimage);
+        }
+    }
+    
+    public boolean isEvil(){
+        return evil;
+    }
+}
 ```
 </details>
 
-
+Die Klasse `Camelidae` ist eine Erweiterung der `GravityActor` Klasse.  
+Im Konstruktor wird `target` definiert, was zu Anfang Bario entspricht.  
+In der `act()` wird als erstes `gravity()` aufgerufen. Falls das Kamel dabei entfernt wird ist `getWorld() == null` `true` und die Funktion wird beendet, da sonst eine `NullPointerException` auftritt, da das Kamel nicht mehr in der `MyWorld` ist.  
+Wie bei `Carpeto` wird überprüft ob `jump` ` true` ist, falls ja wird es auf der nach oben bewegt. Wenn es keinen Boden unter sich hat oder unter `target` ist wird `jump = true` gesetzt.  
+Anschließend wird das Kamel auf der x-Ebene in Richtung von `target` bewegt, falls sie sich nicht bereits überschneiden.  
+Das Kamel kann entweder böse (`evil = true`) oder gut (`evil = false`) sein. Falls es böse ist und sich mit Bario überschneidet wird `bario.speed` auf 1 und (`this.`)`speed` auf 0 gesetzt. Falls es gut ist passiert dasselbe mit Carpeto.  
+  
+Die Funktion `setEvil(boolean e)` setzt `evil` auf `e` und passt anchließend `target` an. Falls es böse ist wird das Ziel auf Bario gesetzt, falls es gut ist auf Carpeto. Außerdem wird das bild angepasst um den Spieler einen Überblick zu ermöglichen ob Das Kamel böseoder gut ist. Die Alpacas sind auf Barios Seite, die Trampeltiere (hier camel genannt) sind auf Carpetos Seite.  
+  
+Die Funktion `isEvil()` gibt `evil` zurück.
 
 </details>
 <!--- Ende Camelidae                                                                                                      -->
@@ -765,11 +855,60 @@ public class Carpeto extends GravityActor{
     <summary>Klasse</summary>
     
 ```java
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
+public class Rocket extends Actor{
+    int rocket = 0;
+    MyWorld w;
+
+    public void addedToWorld(World world){
+        w = (MyWorld) world;
+    }
+
+    public void act() {
+        rocket += 1;
+
+        Camelidae camelidae = (Camelidae) getOneIntersectingObject(Camelidae.class);
+        if(camelidae != null && camelidae.isEvil()){
+            camelidae.setEvil(false);
+            w.removeRocket(this);
+            return;
+        }
+
+        Carpeto carpeto = (Carpeto) getOneIntersectingObject(Carpeto.class);
+        if(carpeto != null){
+            if(!carpeto.stage2){
+                carpeto.hit();
+                w.removeRocket(this);
+                return;
+            } else {
+                carpeto.speed = 0;
+                carpeto.jump = false;
+            }
+
+        }
+
+        if(rocket<20){
+            move(6);
+        } else if (rocket >= 20 && rocket <25) {
+            turn(-36);
+        } else if(rocket != 45){
+            move(6);
+        } else {
+            w.removeRocket(this);
+        }
+
+        
+    }    
+}
 ```
 </details>
 
-
+Sobald die `Rocket` zur Welt hinzugefügt wurde, wird `w` auf die aktuelle Welt vom Typ `MyWorld` gesetzt. Die `MyWorld` ist für den Cooldown und die Verfügbarkeit der `Rocket` zuständig (siehe MyWorld).  
+In der `act()` wird der Integer `rocket` bei jedem Durchlauf um 1 erhöht. Anschließend wird geprüft ob die Rakete sich mit einem `Camelidae` überschneidet und ob dieses ggf. böse ist. Falls ja wird die Rakete entfernt, das `Camelidae` gut (`evil = false`) und die Funktion beendet.  
+Anschließend wird überprüft ob sich die Rakete mit Carpeto überschneidet, falls ja wird überprüft in welcher Phase sich Carpeto befindet (`stage2`). Wenn er sich noch in der ersten Phase befindet wird `Carpeto.hit()` aufgerufen, die Rakete entfernt und die Funktion beendet. Wenn er sich nicht mehr in der ersten Phase befindet, also `stage2 = true` gilt wird `carpeto.speed` auf 0 und `carpeto.jump` auf false gesetzt. `carpeto` bleibt also in der Luft stehen, solange er sich mit der Rakete überschneidet.  
+Im letzten Teil wird die Bewegung der Rakete gesteuert. Bei den ersten 20 Durchläufen bewegt sie sich geradeaus, danach dreht sie sich ohne sich zu bewegen und fliegt nach der Drehung wieder geradeaus. Sobald sie sich wieder am Ausgangspunkt befindet, `rocket` also 45 ist, wird sie entfernt.
 
 </details>
 <!--- Ende Rocket                                                                                                      -->
@@ -783,10 +922,61 @@ public class Carpeto extends GravityActor{
     <summary>Klasse</summary>
     
 ```java
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Random;
+import java.lang.Math;
+import java.util.List;
 
+public class Blob extends Actor{
+    
+    int x;
+    int y;
+    Actor target;
+    Random r = new Random();
+    boolean remove = false;
+    
+    public Blob(Actor target){
+        x = target.getX();
+        y = target.getY();
+    }
+    
+    public void act(){
+        turnTowards(x, y);
+        move(r.nextInt(5));
+        setRotation(r.nextInt(360));
+        
+        List<Actor> list= getIntersectingObjects(null);
+        for(Actor a : list){
+            if (a instanceof Ground){
+                Ground g = (Ground) a;
+                g.lowerTransparency(100);
+                remove = true;
+                if(g.getWorld() != null && r.nextInt(10) == 3){
+                    Camelidae c = new Camelidae( ((MyWorld) getWorld()).getBario() );
+                    getWorld().addObject(c, g.getX(), g.getY());
+                }
+            }
+            
+            if(a instanceof Camelidae){
+                Camelidae c = (Camelidae) a;
+                c.setEvil(true);
+                remove = true;
+            }
+        }
+        
+        if(getX() == x && getY() == y) remove = true;
+        
+        if(remove) getWorld().removeObject(this);
+    } 
+    
+}
 ```
 </details>
 
+`Blob` ist die Waffe von Carpeto. Im Konstruktor werden die aktuelle x und y-Koordinate eines `Actor` als `x` und `y` gespeichert.  
+In der `act()` wird der Blob in Richtung von `x` und `y` gedreht und bewegt sich anschließend um einen zufälligen Wert zwischen 0 und 4. Anschließend wird die Rotation auf einen zufälligen Wert zwischen 0 und 359 gesetzt.  
+Danach wird überprüft ob der `Blob` sich mit beliebigen Objekten überschneidet. Falls ja wird überprüft um was für Objekte es sich handelt. Wenn es ein Objekt des Typs `Ground` ist, wird dessen Transparenz mit `g.lowerTransparency(100)` gesenkt und `remove` auf `true` gesetzt. Wenn der `Ground g` danach noch existiert besteht eine 1:20 Chance dass auf ihm ein `Camelidae` auftaucht.  Wenn es ein Objekt des Typs `Camelidae` ist wird dieses böse und `remove` auf `true` gesetzt.  
+Es wird überprüft ob der `Blob` seine Zielkoordinaten erreicht hat, falls ja wird `remove` auf `true` gesetzt. Am Ende wird überprüft ob `remove == true` gilt, wenn das der Fall ist wird der `Blob` entfernt.
 
 
 </details>
