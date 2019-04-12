@@ -416,7 +416,7 @@ Im zweiten Teil der `act()` wird das Verhalten der Alpakas definiert. Wie bei de
 <!--- Sprite                                                                                                      -->
 <details>
     <summary>Sprite</summary>
-    
+
 <details>
     <summary>Klasse</summary>
     
@@ -496,6 +496,8 @@ public class Ground extends Actor{
 
 ```
 </details>
+
+![Ground]()
 
 Die `Ground` Klasse beschreibt das Verhalten der Plattformen.  
 Im Konstruktor wird ein `Sprite` mit einem Bild von einem Teppich erstellt. Da es sich um einen Sprite handelt, hat er keinen Effekt.  
