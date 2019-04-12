@@ -33,7 +33,9 @@ Die Hauptattraktion für Lernende ist, dass sehr schnell und interaktiv animiert
 
 ### Die Welten
 
-#### `Start`
+
+<details>
+  <summary> Start </summary>
 
 <details>
   <summary>Gesamte Klasse</summary>
@@ -124,10 +126,19 @@ public class Start extends World{
 ```
 </details>
 
-Die Startwelt lässt sich nicht vom Spieler beeinflussen, sie spielt eine Animation ab, nach welcher das Spiel gestartet wird. Die Animation lässt sich auch überspringen.
+Die Startwelt lässt sich nicht vom Spieler beeinflussen, sie spielt eine Animation ab, nach welcher das Spiel gestartet wird. Die Animation lässt sich auch überspringen.  
+Innerhalb des Konstruktors werden 10 Alpakas mit jeweils unterschiedlichen Größen erstellt und der Welt hinzugefügt. Gleichzeitig werden alle Alpacas in der ArrayList `alpacas` gespeichert.  
+![Start Bildschirm](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/StartScreen.PNG)
 
-Innerhalb des Konstruktors werden 10 Alpakas mit jeweils unterschiedlichen Größen erstellt und der Welt hinzugefügt. Gleichzeitig werden alle Alpacas in der ArrayList `alpacas` gespeichert.
+Die `act()`Methode besteht aus 4 Teilen.  
+Im ersten Teil wird überprüft ob der Nutzer die Leertaste drückt um so den Startbildschirm zu überspringen.  
 
-Die `act()`Methode besteht aus 4 Teilen.
-Im ersten Teil wird überprüft ob der Nutzer die Leertaste drückt um so den Startbildschirm zu überspringen.
-Der zweite Teil ist für das Verhalten der am Anfang hinzugefügten Alpakas zuständig, die Alpakas sind `Sprite`s
+Der zweite Teil ist für das Verhalten der am Anfang hinzugefügten Alpakas zuständig, da es sich bei den Alpakas um `Sprite` Objekte handelt, welche kein eigenes Verhalten besitzen wird dieses innerhalb der Welt definiert. Am Anfang der Klasse wurde der Integer i definiert, dieser wird in jedem Durchlauf um 1 erhöht und wird benutzt um den Ablauf der Animationen zu steuern.
+In den ersten 400 Durchläufen der `act()` Methode bewegen die Alpakas sich jeweils um 0-2 Pixel, außerdem besteht eine 1:50 Chance dass die Alpacs sich drehen. Dafür werden die Alpacas um 180° gedreht, was jedoch dazu führt dass sie falsch herum sind, deshalb wird ihr Bild an ihrer vertikalen Achse gespiegelt.  
+Im 401sten Durchlauf werden ihre Bilder auf ein nach links schauendes Alpaka gesetzt ('Alpaca.png' schaut nach rechts) und sie werden in Richtung des linken Bildschirmrands gedreht. 
+In allen Durchläüfen danach bewegen sie sich um jewils zwei Felder (mit der im Konstruktor defnierten Seitenlänge von einem Pixel). Sobald sie den Bildschirmrand erreicht haben werden sie aus der Welt entfernt. Gleichzeitig wird durch `alpacasremoved` mitgezählt wie viele Alpakas bereits entfernt wurden. Sobald die Anzahl der entfernten Alpakas der Anzahl der anfangs hinzugefügten Alpakas entspricht wird das Spiel gestartet, indem die Welt zu `MyWorld` geändert wird.
+
+Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm zuständig. Beim 121sten Durchlauf wird "Carpeto", der Bösewicht, vergrößert, gespiegelt und anschließend hinzugefügt. Im 226sten Durchlauf wird Carpetos Dialogtext hinzugefügt, im 401sten Barios Aufruf an seine Alpakas zu fliehen. Im 461sten Durchlauf wird Barios Text dann auf eine Antwort an Carpeto geändert.
+![Start Bildschirm bei i > 460](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/StartScreen2.PNG)
+
+</details>
