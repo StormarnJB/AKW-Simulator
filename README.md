@@ -37,7 +37,8 @@ Die Hauptattraktion für Lernende ist, dass sehr schnell und interaktiv animiert
 
 <details>
   <summary>Gesamte Klasse</summary>
-  ``` 
+ 
+```java 
 import greenfoot.*;
 import java.util.Random;
 import java.util.List;
@@ -65,10 +66,12 @@ public class Start extends World{
     }
 
     public void act(){
+        //Teil 1
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new MyWorld());
         }
 
+        //Teil 2
         for(Sprite a : alpacas){
             if(i < 400){
                 if(r.nextInt(50) == 10){
@@ -91,6 +94,7 @@ public class Start extends World{
             if(alpacasremoved == alpacas.size()) Greenfoot.setWorld(new MyWorld());
         }
 
+        //Teil 3
         switch (i){
             case 120:   GreenfootImage carpetoimage = new GreenfootImage("Carpeto.png");
                         carpetoimage.scale(100, 100);
@@ -113,9 +117,17 @@ public class Start extends World{
                         s2.setImage(text3);
                         break;
         }
+        //Teil 4
         i++;        
     }
 } 
 ```
-
 </details>
+
+Die Startwelt lässt sich nicht vom Spieler beeinflussen, sie spielt eine Animation ab, nach welcher das Spiel gestartet wird. Die Animation lässt sich auch überspringen.
+
+Innerhalb des Konstruktors werden 10 Alpakas mit jeweils unterschiedlichen Größen erstellt und der Welt hinzugefügt. Gleichzeitig werden alle Alpacas in der ArrayList `alpacas` gespeichert.
+
+Die `act()`Methode besteht aus 4 Teilen.
+Im ersten Teil wird überprüft ob der Nutzer die Leertaste drückt um so den Startbildschirm zu überspringen.
+Der zweite Teil ist für das Verhalten der am Anfang hinzugefügten Alpakas zuständig, die Alpakas sind `Sprite`s
