@@ -33,7 +33,7 @@ Die Hauptattraktion für Lernende ist, dass sehr schnell und interaktiv animiert
 
 ### Die Welten
 
-
+<!--- START                                                                                                              -->
 <details>
   <summary> Start </summary>
 
@@ -130,10 +130,10 @@ Die Startwelt lässt sich nicht vom Spieler beeinflussen, sie spielt eine Animat
 Innerhalb des Konstruktors werden 10 Alpakas mit jeweils unterschiedlichen Größen erstellt und der Welt hinzugefügt. Gleichzeitig werden alle Alpacas in der ArrayList `alpacas` gespeichert.  
 ![Start Bildschirm](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/StartScreen.PNG)
 
-Die `act()`Methode besteht aus 4 Teilen.  
+Die `act()`Methode besteht aus drei Teilen.  
 Im ersten Teil wird überprüft ob der Nutzer die Leertaste drückt um so den Startbildschirm zu überspringen.  
 
-Der zweite Teil ist für das Verhalten der am Anfang hinzugefügten Alpakas zuständig, da es sich bei den Alpakas um `Sprite` Objekte handelt, welche kein eigenes Verhalten besitzen wird dieses innerhalb der Welt definiert. Am Anfang der Klasse wurde der Integer i definiert, dieser wird in jedem Durchlauf um 1 erhöht und wird benutzt um den Ablauf der Animationen zu steuern.
+Der zweite Teil ist für das Verhalten der am Anfang hinzugefügten Alpakas zuständig, da es sich bei den Alpakas um `Sprite` Objekte handelt, welche kein eigenes Verhalten besitzen wird dieses innerhalb der Welt definiert. Am Anfang der Klasse wurde der Integer i definiert, dieser wird in jedem Durchlauf um 1 erhöht (`i++;`) und wird benutzt um den Ablauf der Animationen zu steuern.
 In den ersten 400 Durchläufen der `act()` Methode bewegen die Alpakas sich jeweils um 0-2 Pixel, außerdem besteht eine 1:50 Chance dass die Alpacs sich drehen. Dafür werden die Alpacas um 180° gedreht, was jedoch dazu führt dass sie falsch herum sind, deshalb wird ihr Bild an ihrer vertikalen Achse gespiegelt.  
 Im 401sten Durchlauf werden ihre Bilder auf ein nach links schauendes Alpaka gesetzt ('Alpaca.png' schaut nach rechts) und sie werden in Richtung des linken Bildschirmrands gedreht. 
 In allen Durchläüfen danach bewegen sie sich um jewils zwei Felder (mit der im Konstruktor defnierten Seitenlänge von einem Pixel). Sobald sie den Bildschirmrand erreicht haben werden sie aus der Welt entfernt. Gleichzeitig wird durch `alpacasremoved` mitgezählt wie viele Alpakas bereits entfernt wurden. Sobald die Anzahl der entfernten Alpakas der Anzahl der anfangs hinzugefügten Alpakas entspricht wird das Spiel gestartet, indem die Welt zu `MyWorld` geändert wird.
@@ -142,3 +142,114 @@ Der dritte Teil ist für den restlichen Teil des Geschehens auf dem Bildschirm z
 ![Start Bildschirm bei i > 460](https://github.com/StormarnJB/BarioTheGame/blob/master/Screenshots/StartScreen2.PNG)
 
 </details>
+<!--- Ende START                                                                                                          -->
+
+<!--- MyWorld                                                                                                              -->
+<details>
+  <summary> MyWorld </summary>
+
+<details>
+  <summary>Gesamte Klasse</summary>
+ 
+```java 
+
+```
+</details>
+
+</details>
+<!--- Ende MyWorld                                                                                                       -->
+
+
+<!--- GameOver                                                                                                              -->
+<details>
+  <summary> GameOver </summary>
+
+<details>
+  <summary>Gesamte Klasse</summary>
+ 
+```java 
+
+```
+</details>
+
+</details>
+<!--- Ende GameOver                                                                                                       -->
+
+
+<!--- Victory                                                                                                           -->
+<details>
+  <summary> Victory </summary>
+
+<details>
+  <summary>Gesamte Klasse</summary>
+ 
+```java 
+import greenfoot.*; 
+import java.util.Random;
+import java.util.ArrayList;
+
+public class Victory extends World{
+
+    Sprite carpeto;
+    int i = 0;
+    Random r = new Random();
+    ArrayList<Sprite> alpacas = new ArrayList<Sprite>();
+
+    public Victory(){
+        super(600, 400, 1);
+
+        GreenfootImage carpetoimage = new GreenfootImage("Carpeto.png");
+        carpetoimage.scale(100, 100);
+        carpetoimage.mirrorHorizontally();
+        carpeto = new Sprite(carpetoimage);
+        carpeto.turn(70);
+        addObject(carpeto, 300, 100); 
+    }
+
+    public void act(){
+
+        switch(i){
+            case 60:    GreenfootImage text1 = new GreenfootImage("Oh nein! Du hast mich besiegt\nund so alle Alpacas gerettet!", 30, Color.BLACK, null);
+                        Sprite s1 = new Sprite(text1);
+                        addObject(s1, 350, 30);
+                        break;
+
+            case 180:   GreenfootImage text2 = new GreenfootImage("Die Kamele wirst du auch freilassen!", 30, Color.WHITE, null);
+                        Sprite s2 = new Sprite(text2);
+                        addObject(s2, 350, 350);
+                        break;
+
+            case 240:   for(int x = 0; x < 10; x++){
+                            GreenfootImage alpacaimage = new GreenfootImage("Alpaca.png");
+                            int scale = r.nextInt(20) + 40;
+                            alpacaimage.scale(scale, scale);
+                            Sprite alpaca = new Sprite(alpacaimage);
+                            addObject(alpaca, r.nextInt(40) + 30, r.nextInt(300) + 50);
+                            alpacas.add(alpaca);
+                        }
+                        break;
+        }
+
+        for(Sprite a : alpacas){
+            if(r.nextInt(30) == 10){
+                a.setRotation(a.getRotation() + 180);
+                a.getImage().mirrorVertically();
+            }
+            a.move(r.nextInt(2));
+        }
+
+        i++;
+    }
+}
+
+```
+</details>
+
+Die Welt `Victory`, welche nach einem Sieg von Bario geöffnet wird, ist gleich wie die `Start` Welt aufgebaut.  
+Im konstruktor wird ein `Sprite` mit dem Bild von Carpeto erstellt, welches vergrößert und gespiegelt wurde.  
+Innerhalb der `act()` wird erneut der Ablauf und das Verhalten der Alpakas gesteuert. Bei jedem urchlauf wird der Integer i um einen erhöht.  
+Im 61sten Durchlauf wird Carpetos Text angezeigt, welcher ausdrückt dass er besiegt wurde. Im 181sten Durchlauf Wird Barios Antwort angezeigt. Im 241sten Durchlauf erscheinen dann wieder Barios Alpakas. Es wird der gleiche Code wie bei der `Start`Welt benutzt.  
+Im zweiten Teil der `act()` wird das Verhalten der Alpakas definiert. Wie bei der `Start`Welt bewegen sie sich jewils um 2 und wechseln dabei gelegentlich die Richtung.
+
+</details>
+<!--- Ende Victory                                                                                                      -->
