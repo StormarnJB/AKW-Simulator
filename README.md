@@ -448,11 +448,63 @@ Die `Sprite`Klasse wird in den Welten `Start`, `MyWorld`, und `Victory` benutzt.
     <summary>Klasse</summary>
     
 ```java
+import greenfoot.*; 
+
+public class Ground extends Actor{
+
+    Sprite gs;
+    boolean loweredTransparency = false;
+
+    public Ground(){
+        gs = new Sprite(new GreenfootImage("groundshadow.png"));
+    }
+
+    public void act(){
+        if(isAtEdge()){
+            setLocation(600, getY());
+        }
+
+        if(gs.getWorld() == null) getWorld().addObject(gs, 100, 100);
+        gs.setLocation(getX() - 10, getY() - 10);
+        
+        if(!loweredTransparency && getImage().getTransparency() != 255){
+            lowerTransparency(-1);
+        }
+        loweredTransparency = false;
+    }
+
+    public void lowerTransparency(int x){
+        int t = getImage().getTransparency();
+        
+        if(t - x <= 0){
+            getWorld().removeObject(gs);
+            getWorld().removeObject(this);
+            return;
+        }
+
+        getImage().setTransparency(t - x);
+        gs.getImage().setTransparency(t - x);
+        loweredTransparency = true;
+    }
+
+    public void setTransparency(int x){
+        getImage().setTransparency(x);
+        gs.getImage().setTransparency(x);
+    }
+}
 
 ```
 </details>
 
-
+Die `Ground` Klasse beschreibt das Verhalten der Plattformen.  
+Im Konstruktor wird ein `Sprite` mit einem Bild von einem Teppich erstellt. Da es sich um einen Sprite handelt, hat er keinen Effekt.  
+In der `act()` wird als erstes überprüft ob die Plattform am Rand des Spielbereichs ist, was passieren kann da sämtliche Akteure in der `MyWorld` konstant nach links verschoben werden. Falls das der Fall ist wird sie an den rechten Rand gesetzt von wo sie sich erneut nach links bewegt.
+Anschließend wird ihr "Schatten" verschoben, sodass er an die Plattform selbst anknüpft. Falls er (nach Erstellen der Welt) noch nicht hinzugefügt wurde, wird er hinzugefügt.  
+Die Transparenz der Plattformen wird verringert wenn ein `GravityActor` auf ihnen steht (siehe `GravityActor.gravity()`) oder wenn sie von einem `Blob` getroffen werden, sie sollen aber auch regeneriern können, was in der `act()` geschieht. Wenn ihre Transparenz nicht bei 255 (dem Maximalwert) liegt und ihre Transparenz beim letzten Durchlauf nicht verändert wurde (`!loweredtransparency`) wird ihre Transparenz erhöht. Anschließend wird `loweredtransparency` auf `false` gesetzt. Nur wenn es von einem anderen Objekt heruntergesetzt wird soll die Plattform nicht "regenerieren".  
+  
+Die Funktion `lowerTransparency(int x)` senkt die Transparenz der Plattform um den gewünschten Wert `x`. Bevor das passieren kann wird noch der Wert `x` mit der aktuellen Transparenz verglichen. Wenn die gewünschte Transparenz kleiner/gleich 0 wäre wird die Plattform und ihr "Schatten" entfernt und die Funktion beendet. Ist das nicht der Fall wird die transparenz der Plattform und die ihres Schattens angepasst und `loweredtransparency` auf `true` gesetzt, da sie sonst "regenerieren" würde.  
+  
+Die Funktion setTransparency wird derzeit nicht benutzt. Sie setzt die Transparenz der plattform und ihres "Schattens" auf den gewünschten Wert.
 
 </details>
 <!--- Ende Ground                                                                                                      -->
@@ -466,11 +518,51 @@ Die `Sprite`Klasse wird in den Welten `Start`, `MyWorld`, und `Victory` benutzt.
     <summary>Klasse</summary>
     
 ```java
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
+public class GravityActor extends Actor{
+    public int v = 0;
+    boolean jump = false;
+    
+    public void gravity(){
+        List<Ground> glist = getWorld().getObjectsAt(getX(), getY() + getImage().getHeight()/2, Ground.class);
+        if(glist.size() == 0){
+            setLocation(getX(), getY() + v);
+            v += 1;
+        } else {
+            v = 0;
+            for(Ground g : glist){
+                g.lowerTransparency(1);
+            }
+        }
+        
+        List<Ground> ig = getIntersectingObjects(Ground.class);
+        if(ig.size() != 0 && getOneObjectAtOffset(0, getImage().getHeight()/2, Ground.class) == null){
+            setLocation(getX(), ig.get(0).getY() - ig.get(0).getImage().getHeight() / 2 - getImage().getHeight() / 2);
+            jump = false;
+        }
+        
+        if(getY()>=390){
+            if(this instanceof Bario){
+                Greenfoot.setWorld(new GameOver());
+            }
+            if(this instanceof Carpeto){
+                Greenfoot.setWorld(new Victory());
+            }
+            getWorld().removeObject(this);
+        }
+    }
+}
 ```
 </details>
 
-
+Die `GravityActor` Klasse selbst tritt im Spiel selbst nicht in Erscheinung, stattdessen handelt es sich bei `Bario`, `Carpeto` und `Camelidae` um Erweiterungen von ihr. Die Klasse selbst besteht nur aus der `gravity()` Funktion.  
+Die `gravity()` Funktion ist für die Gravitation zuständig, sie besteht aus drei Teilen.   
+  
+Im ersten Teil wird überprüft ob unter dem Mittelpunkt des `GravityActors` eine Plattform (`Ground`) existiert. Dafür wird eine Liste mit Plattformen an dieser Stelle abgerufen. Wenn diese Liste leer ist (also 0 Elemente besitzt) wird die Position des `GravityActors` um `v` Felder nach unten verschoben und `v` anschließend um 1 erhöht. Wenn die Liste allerdings mit Inhalt gefüllt ist wird `v` auf 0 gesetzt und die Transparenz der Plattformen um 1 verringert (siehe Ground).  
+Im zweiten Teil wird überprüft ob der `GravityActor` sich mit einer Plattform überschneidet während er nicht auf einer Plattform steht. Ist dass der Fall wird er auf die Plattform gesetzt, da er sonst genau auf einer Plattform landen muss um nicht hindurchzufallen. Das kann passieren da die Plattformen (`Ground`) nur wenige Pixel dick sind und der `GravityActor` eine höhere Fallgeschwindigkeit `v` als die Breite der Plattformen besitzen kann. Außerdem wird `jump` auf false gesetzt, falls der `GravityActor` also im Sprung war, ist dieser jetzt beendet.  
+Im letzten Teil wird überprüft ob sich der `GravityActor` am unteren Rand des Spielbildschirms befindet. Falls ja wird er entfernt und das Spiel ggf. beendet.
 
 </details>
 <!--- Ende GravityActor                                                                                                    -->
@@ -484,11 +576,49 @@ Die `Sprite`Klasse wird in den Welten `Start`, `MyWorld`, und `Victory` benutzt.
     <summary>Klasse</summary>
     
 ```java
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
+public class Bario extends GravityActor{
+    
+    boolean facingright = true;
+    boolean facingleft = false;
+    int speed = 5;
+    
+    public void act(){
+        
+        if(Greenfoot.isKeyDown("left")){
+            setLocation(getX() - speed, getY());
+            facingleft = true;
+            facingright = false;
+        }
+        if(Greenfoot.isKeyDown("right")){
+            setLocation(getX() + speed, getY());
+            facingleft = false;
+            facingright = true;
+        }
+        if(Greenfoot.isKeyDown("up")){
+            jump = true;
+        }
+        if(jump){
+            setLocation(getX(), getY() - 15);
+        }
+        
+        gravity();
+        
+        speed = 5;
+    }
+    
+    public boolean isFacingRight(){ return facingright; }
+    public boolean isFacingLeft(){ return facingleft; }
+}
 ```
 </details>
 
-
+Die Klasse `Bario` ist eine Erweiterung der `GravityActor` Klasse.  
+In der `act()` wird überprüft ob eine der Pfeiltasten gedrückt wird. Wenn die Pfeiltaste nach links oder rechts gedrückt wird, bewegt sich Bario mit der Geschwindigkeit `speed` in die gewünschte Richtung. Gleichzeitig wird festgehalten in welche Richtung Bario sich zuletzt bewegt hat, was für die Startrichtung der Rakete wichtig ist. Wird die Pfeiltaste nach oben gedrückt wird `jump` auf `true` gesetzt.  
+Anschließend wird überprüft ob `jump` `true` ist, falls ja wird Bario um 15 Felder nach oben bewegt. Anschließend wird `gravity()` aus der `GravityActor` Klasse aufgerufen, in welcher `jump` wieder auf `false` gesetzt werden kann. Am Ende wird die, von `Camelidae` beeinflussbare x-Geschwindigkeit `speed` wieder auf 5 gesetzt.  
+Die Funktionen `isFacingRight()` und `isFacingLeft()` geben jeweils dern Wert `facingright` oder `facingleft` zurück.
 
 </details>
 <!--- Ende Bario                                                                                                      -->
@@ -502,7 +632,104 @@ Die `Sprite`Klasse wird in den Welten `Start`, `MyWorld`, und `Victory` benutzt.
     <summary>Klasse</summary>
     
 ```java
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.lang.Math;
+import java.util.Random;
 
+public class Carpeto extends GravityActor{
+
+    Bario b;
+    Sprite gs;
+    boolean stage2 = false;
+    int lifes = 3;
+    Random r = new Random();
+    int speed = 3;
+
+    public Carpeto(Bario bario){
+        b = bario;
+        gs = new Sprite(new GreenfootImage("groundshadowevil.png"));
+    }
+
+    public void act(){
+        
+        if(!stage2){
+            boolean move = false;
+            if(r.nextInt(20) == 0) move = true;
+
+            if(move){
+                int bx = b.getX();
+                int by = b.getY();
+                int cx = getX();
+                int cy = getY();
+
+                if(cy != by){
+                    if(cy - by > getImage().getHeight()/2){
+                        setLocation(getX(), cy - 30);
+                    } else if(cx - bx < getImage().getWidth()/2) {
+                        setLocation(getX(), cy + 30);
+                    }
+                }
+                if(cx != bx){
+                    if(cx - bx > 0){
+                        setLocation(cx - 30, getY());
+                    } else {
+                        setLocation(cx + 30, getY());
+                    }
+                }
+            }
+
+            gs.setLocation(getX(), getY() + getImage().getHeight() / 2);
+        }
+
+        if(stage2){
+
+            int bx = b.getX();
+            int by = b.getY();
+            int cx = getX();
+            int cy = getY();
+
+            if(jump){
+                setLocation(getX(), getY() - 15);
+            } 
+
+            if(getObjectsAtOffset(0, getImage().getHeight()/2, Ground.class).size() == 0)jump = true;
+
+            if(cy - by > getImage().getHeight()){
+                jump = true; 
+            }
+
+            if(cx != bx){
+                if(cx - bx > getImage().getWidth()/2){
+                    setLocation(bx - speed, getY());
+                } else if (cx - bx < getImage().getWidth()/2) {
+                    setLocation(cx + speed, getY());
+                }
+
+            }
+            
+            if(getY() > 375) jump = true;
+
+            speed = 3;
+            gravity();
+        }
+        
+        if(r.nextInt(40) == 10){
+                Blob blob = new Blob(b);
+                getWorld().addObject(blob, getX(), getY());
+            }
+
+    }    
+
+    public void hit(){
+        lifes--;
+        if(lifes == 2)gs.getImage().setTransparency(128);
+        if(lifes == 1)gs.getImage().setTransparency(64);
+        if(lifes == 0){
+            getWorld().removeObject(gs);
+            stage2 = true;
+        }
+    }
+}
 ```
 </details>
 
